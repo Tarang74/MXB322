@@ -1,0 +1,229 @@
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
+\documentclass{article}
+\input{LaTeX-Submodule/template.tex}
+
+% Additional packages & macros
+
+% Header and footer
+\newcommand{\unitName}{Partial Differential Equations}
+\newcommand{\unitTime}{Semester 2, 20xx}
+\newcommand{\unitCoordinator}{Dr Michael Dallaston}
+\newcommand{\documentAuthors}{Tarang Janawalkar}
+
+\fancyhead[L]{\unitName}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% Copyright
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    imagewidth={5em},
+    hyphenation={raggedright}
+]{doclicense}
+
+\date{}
+
+\begin{document}
+%
+\begin{titlepage}
+    \vspace*{\fill}
+    \begin{center}
+        \LARGE{\textbf{\unitName}} \\[0.1in]
+        \normalsize{\unitTime} \\[0.2in]
+        \normalsize\textit{\unitCoordinator} \\[0.2in]
+        \documentAuthors
+    \end{center}
+    \vspace*{\fill}
+    \doclicenseThis
+    \thispagestyle{empty}
+\end{titlepage}
+\newpage
+%
+\tableofcontents
+\newpage
+%
+\section{Fourier Series}
+\begin{definition}[Fourier series expansion]
+    The \textbf{Fourier series expansion} of \(f\) represents \(f\) by a periodic function on an interval, using trigonometric (sine and cosine) terms.
+
+    Suppose a function \(f\left( x \right)\) is defined on an interval \(\interval{-L}{L}\), then
+    the Fourier series expansion of \(f\) is given by:
+    \begin{equation}\label{eq:fourier}
+        f_F\left( x \right) = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)}
+    \end{equation}
+    so that \(f = f_F\) on \(\interval{-L}{L}\). Here we cannot be certain about the equailty \(f = f_F\) for all \(x\) as \(f_F\) is perdioc and the convergence properties of the infinite sum are not known.
+\end{definition}
+Before attempting to determine the coefficients \(a_n\) and \(b_n\) for \(n \geq 1\), we must first evaluate certain useful integral relationships involving trigonometric functions.
+\subsection{Integral Relationships}
+\subsubsection{Sine and Cosine}
+For \(n \in \N\):
+\begin{align}
+    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \odif{x} & = \frac{L}{n \pi} \left[ \sin{\left( \frac{n \pi x}{L} \right)} \right]_{-L}^L            \nonumber \\
+                                                                & = \frac{L}{n \pi} \left[ \sin{\left( n \pi \right)} - \sin{\left( -n \pi \right)} \right] \nonumber \\
+                                                                & = \frac{L}{n \pi} \left[ 0 - 0 \right]                                                    \nonumber \\
+                                                                & = 0. \label{eq:cosine}
+\end{align}
+\begin{align}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \odif{x} & = -\frac{L}{n \pi} \left[ \cos{\left( \frac{n \pi x}{L} \right)} \right]_{-L}^L           \nonumber \\
+                                                                & = \frac{L}{n \pi} \left[ \cos{\left( n \pi \right)} - \cos{\left( -n \pi \right)} \right] \nonumber \\
+                                                                & = \frac{L}{n \pi} \left[ 1 - 1 \right]                                                    \nonumber \\
+                                                                & = 0. \label{eq:sin}
+\end{align}
+\subsubsection{Combinations of Sine and Cosine}
+% \begin{align*}
+%     f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
+%                                                                                           a_0 \cos{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \\
+%                                                                                                                                      & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)}
+%                                                                                       \end{aligned}                                           \\
+%     \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{aligned}[t]
+%                                                                                           a_0 \int_{-L}^L \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & + \sum_{n = 1}^\infty a_n \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} \\
+%                                                                                                                                                           & + \sum_{n = 1}^\infty b_n \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}
+%                                                                                       \end{aligned}
+% \end{align*}
+Recall the Werner formulas:
+\begin{gather*}
+    2 \cos{\left( \alpha \right)} \cos{\left( \beta \right)} = \cos{\left( \alpha - \beta \right)} + \cos{\left( \alpha + \beta \right)} \\
+    2 \sin{\left( \alpha \right)} \sin{\left( \beta \right)} = \cos{\left( \alpha - \beta \right)} - \cos{\left( \alpha + \beta \right)} \\
+    2 \sin{\left( \alpha \right)} \cos{\left( \beta \right)} = \sin{\left( \alpha - \beta \right)} + \sin{\left( \alpha + \beta \right)}
+\end{gather*}
+For \(n,\: m \in \N\),
+
+\underline{Product of two cosine functions:}
+\begin{equation*}
+    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = \frac{1}{2} \int_{-L}^L \cos{\left( \frac{\left( n - m \right) \pi x}{L} \right)} \odif{x} + \frac{1}{2} \int_{-L}^L \cos{\left( \frac{\left( n + m \right) \pi x}{L} \right)} \odif{x}
+\end{equation*}
+As \(n + m \in \N\), the second integral term will evaluate to \(0\) due to \hyperref[eq:cosine]Equation~{\ref{eq:cosine}}.
+For the first integral term, \(n - m \in \N\), except when \(n = m\) which results in \(\cos{\left( 0 \right)} = 1\).
+Hence
+\begin{equation*}
+    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = \begin{cases}
+        0, & n \neq m \\
+        L, & n = m
+    \end{cases}
+\end{equation*}
+\underline{Product of two sine functions:}
+\begin{equation*}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} = \frac{1}{2} \int_{-L}^L \cos{\left( \frac{\left( n - m \right) \pi x}{L} \right)} \odif{x} - \frac{1}{2} \int_{-L}^L \cos{\left( \frac{\left( n + m \right) \pi x}{L} \right)} \odif{x}
+\end{equation*}
+By the same argument,
+\begin{equation*}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} = \begin{cases}
+        0, & n \neq m \\
+        L, & n = m
+    \end{cases}
+\end{equation*}
+\underline{Product of sine and cosine functions:}
+\begin{equation*}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = \frac{1}{2} \int_{-L}^L \sin{\left( \frac{\left( n - m \right) \pi x}{L} \right)} \odif{x} + \frac{1}{2} \int_{-L}^L \sin{\left( \frac{\left( n + m \right) \pi x}{L} \right)} \odif{x}
+\end{equation*}
+Similary, \(n + m \in \N\) results in \(0\) for the second integral term, \(n - m \in \N\) also results in \(0\) for the first term, and when \(n = m\), as \(\sin{\left( 0 \right)} = 0\), the first term is always \(0\).
+Therefore
+\begin{equation*}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = 0
+\end{equation*}
+\subsection{Coefficients of the Fourier Series}
+For \(a_0\) consider integrating \hyperref[eq:fourier]Equation~{\ref{eq:fourier}} from \(-L\) to \(L\).
+\begin{align*}
+    \int_{-L}^L f\left( x \right) \odif{x} & = \int_{-L}^L a_0 \odif{x} + \sum_{n = 1}^\infty a_n \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \odif{x} + \sum_{n = 1}^\infty b_n \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \odif{x} \\
+    \int_{-L}^L f\left( x \right) \odif{x} & = 2 a_0 L                                                                                                                                                                                              \\
+    a_0                                    & = \frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x}
+\end{align*}
+so that \(a_0\) represents the average value of \(f\) on \(\interval{-L}{L}\).
+
+For coefficients \(a_m\), multiply the equation by \(\cos{\left( \frac{m \pi x}{L} \right)}\) before integrating.
+\begin{align*}
+    f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
+                                                                                          a_0 \cos{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \\
+                                                                                                                                     & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)}
+                                                                                      \end{aligned}                                                                                        \\
+    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{aligned}[t]
+                                                                                          a_0 \cancelto{0}{\int_{-L}^L \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}               \\
+                                                                                                                                                                        & + \sum_{n = 1}^\infty b_n \cancelto{0}{\int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}}
+                                                                                      \end{aligned} \\
+    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = a_m L                                                                                                                                                                                                                     \\
+    a_m                                                                           & = \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}
+\end{align*}
+
+For coefficients \(b_m\), multiply the equation by \(\sin{\left( \frac{m \pi x}{L} \right)}\) before integrating.
+\begin{align*}
+    f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
+                                                                                          a_0 \sin{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \\
+                                                                                                                                     & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)}
+                                                                                      \end{aligned}                                                                                                      \\
+    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{aligned}[t]
+                                                                                          a_0 \cancelto{0}{\int_{-L}^L \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \cancelto{0}{\int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} \\
+                                                                                                                                                                        & + \sum_{n = 1}^\infty b_n \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
+                                                                                      \end{aligned} \\
+    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = b_m L                                                                                                                                                                                                                                   \\
+    b_m                                                                           & = \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
+\end{align*}
+To summarise,
+\begin{gather*}
+    a_0 = \frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x} \\
+    a_m = \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} \\
+    b_m = \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} 
+\end{gather*}
+for \(m \in \N\).
+\begin{definition}[Piecewise smooth]
+    A function \(f : \interval{a}{b} \to \R\), is \textbf{piecewise smooth} if each component \(f_i\) of \(f\) has a \underline{bounded derivative} \(f_i'\) which is \underline{continuous everywhere} in \(\interval{a}{b}\), except at
+    a finite number of points at which left- and right-sided derivatives exist.
+\end{definition}
+\begin{theorem}[Convergence of piecewise smooth functions]
+    If \(f\) is a periodic piecewise smooth function on \(\interval{-L}{L}\), \(f_F\) will converge to
+    \begin{equation*}
+        f_F\left( x \right) = \lim_{\epsilon \to 0^{+}} \frac{f\left( x + \epsilon \right) + f\left( x - \epsilon \right)}{2}
+    \end{equation*}
+    that is, \(f = f_F\), except at discontinuities, where \(f_F\) is equal to the point halfway between the left- and right-hand limits.
+\end{theorem}
+\begin{corollary}[Dirichlet conditions]
+    The Dirichlet conditions provide sufficient conditions for a real-valued function \(f\) to be
+    equal to its Fourier series \(f_F\) on \(\interval{-L}{L}\), at each point where \(f\) is continuous.
+
+    The conditions are:
+    \begin{enumerate}
+        \item \(f\) has a finite number of maxima and minima over \(\interval{-L}{L}\).
+        \item \(f\) has a finite number of discontinuities, in each of which the derivative \(f'\) exists
+        and does not change sign.
+        \item \(\int_{-L}^L \abs*{f\left( x \right)} \odif{x}\) exists.
+    \end{enumerate}
+\end{corollary}
+\begin{definition}[Gibbs phenomenon]
+    If \(f_F\) does not converge to \(f\) at discontiniuties \(x_i\), then the \(f_F\) converges 
+    non-uniformally. For Fourier series this property is known as the \textit{Gibbs phenomenon}.
+\end{definition}
+\begin{note}
+    When \(f\) is non-periodic, \(f_F\) converges to the periodic extension of \(f\).
+    The endpoints may converge non-uniformally, corresponding to jump disontinuities in the periodic extension of \(f\).
+\end{note}
+\subsection{Sine and Cosine Series}
+    \begin{definition}[Odd function]
+        \(f\) is an \textit{odd} function if it satisfies
+        \begin{equation*}
+            f\left( -x \right) = -f\left( x \right)
+        \end{equation*}     
+    \end{definition}
+    \begin{definition}[Even function]
+        \(f\) is an \textit{even} function if it satisfies
+        \begin{equation*}
+            f\left( -x \right) = f\left( x \right)
+        \end{equation*}     
+    \end{definition}
+    If \(f\) is an odd function on \(\interval{-L}{L}\), then the coefficients corresponding to the cosine terms will be zero.
+    The Fourier series simplifies to
+    \begin{equation*}
+        f_F = \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)}
+    \end{equation*}
+    where \(b_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
+
+    Likewise if \(f\) is an even function on \(\interval{-L}{L}\), then the coefficients corresponding to the sine terms will be zero.
+    The Fourier series simplifies to
+    \begin{equation*}
+        f_F = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)}
+    \end{equation*}
+    where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
+
+    These special cases are known as the sine and cosine series expansions respectively, resulting in the \textbf{odd} or \textbf{even} periodic extension of \(f\).
+\end{document}

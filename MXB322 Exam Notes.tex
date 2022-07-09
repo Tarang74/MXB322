@@ -1,6 +1,7 @@
-%!TEX program = xelatex
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
 \documentclass{article}
-\usepackage{LaTeX-Submodule/template}
+\input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
 
@@ -18,14 +19,10 @@
 \titlespacing*{\subsection}{0pt}{0\baselineskip}{0\baselineskip}
 
 % Metadata for README
-% ! Unit name
-\newcommand{\unitName}{Unit name}
-% ! Unit semester 
-\newcommand{\unitTime}{Semester #, 20xx}
-% ! Unit coordinator name
-\newcommand{\unitCoordinator}{Unit coordinator name}
-% ! Document authors
-\newcommand{\documentAuthors}{Authors}
+\newcommand{\unitName}{Partial Differential Equations}
+\newcommand{\unitTime}{Semester 2, 20xx}
+\newcommand{\unitCoordinator}{Dr Michael Dallaston}
+\newcommand{\documentAuthors}{Tarang Janawalkar}
 
 %% Copyright
 \usepackage[
