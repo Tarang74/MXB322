@@ -164,7 +164,7 @@ To summarise,
 \begin{gather*}
     a_0 = \frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x} \\
     a_m = \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} \\
-    b_m = \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} 
+    b_m = \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
 \end{gather*}
 for \(m \in \N\).
 \begin{definition}[Piecewise smooth]
@@ -186,12 +186,12 @@ for \(m \in \N\).
     \begin{enumerate}
         \item \(f\) has a finite number of maxima and minima over \(\interval{-L}{L}\).
         \item \(f\) has a finite number of discontinuities, in each of which the derivative \(f'\) exists
-        and does not change sign.
+              and does not change sign.
         \item \(\int_{-L}^L \abs*{f\left( x \right)} \odif{x}\) exists.
     \end{enumerate}
 \end{corollary}
 \begin{definition}[Gibbs phenomenon]
-    If \(f_F\) does not converge to \(f\) at discontiniuties \(x_i\), then the \(f_F\) converges 
+    If \(f_F\) does not converge to \(f\) at discontiniuties \(x_i\), then the \(f_F\) converges
     non-uniformally. For Fourier series this property is known as the \textit{Gibbs phenomenon}.
 \end{definition}
 \begin{note}
@@ -199,31 +199,265 @@ for \(m \in \N\).
     The endpoints may converge non-uniformally, corresponding to jump disontinuities in the periodic extension of \(f\).
 \end{note}
 \subsection{Sine and Cosine Series}
-    \begin{definition}[Odd function]
-        \(f\) is an \textit{odd} function if it satisfies
-        \begin{equation*}
-            f\left( -x \right) = -f\left( x \right)
-        \end{equation*}     
-    \end{definition}
-    \begin{definition}[Even function]
-        \(f\) is an \textit{even} function if it satisfies
-        \begin{equation*}
-            f\left( -x \right) = f\left( x \right)
-        \end{equation*}     
-    \end{definition}
-    If \(f\) is an odd function on \(\interval{-L}{L}\), then the coefficients corresponding to the cosine terms will be zero.
-    The Fourier series simplifies to
+\begin{definition}[Odd function]
+    \(f\) is an \textit{odd} function if it satisfies
     \begin{equation*}
-        f_F = \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)}
+        f\left( -x \right) = -f\left( x \right)
     \end{equation*}
-    where \(b_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
-
-    Likewise if \(f\) is an even function on \(\interval{-L}{L}\), then the coefficients corresponding to the sine terms will be zero.
-    The Fourier series simplifies to
+\end{definition}
+\begin{definition}[Even function]
+    \(f\) is an \textit{even} function if it satisfies
     \begin{equation*}
-        f_F = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)}
+        f\left( -x \right) = f\left( x \right)
     \end{equation*}
-    where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
+\end{definition}
+If \(f\) is an odd function on \(\interval{-L}{L}\), then the coefficients corresponding to the cosine terms will be zero.
+The Fourier series simplifies to
+\begin{equation*}
+    f_F = \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)}
+\end{equation*}
+where \(b_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
 
-    These special cases are known as the sine and cosine series expansions respectively, resulting in the \textbf{odd} or \textbf{even} periodic extension of \(f\).
+Likewise if \(f\) is an even function on \(\interval{-L}{L}\), then the coefficients corresponding to the sine terms will be zero.
+The Fourier series simplifies to
+\begin{equation*}
+    f_F = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)}
+\end{equation*}
+where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
+
+These special cases are known as the sine and cosine series expansions respectively, resulting in the \textbf{odd} or \textbf{even} periodic extension of \(f\).
+\section{Partial Differential Equations}
+A partial differential equation (PDE) is a differential equation that must be solved for an unknown function of at least two independent variables,
+where the equation contains partial derivatives of the unknown function.
+
+PDEs are characterised by a number of properties:
+\begin{itemize}
+    \item The \textbf{order} of the PDE is order of the highest derivative in the equation.
+          Furthermore, each independent variable can be described by its own order.
+    \item A PDE is \textbf{linear} if it is linear in its unknown function and its derivatives.
+          \begin{itemize}
+              \item A linear PDE has \textbf{constant} coefficients if the coefficients if the linear terms do not depend on the independent variables, and has \textbf{variable} coefficients otherwise.
+              \item A linear PDE is \textbf{homogeneous} if all terms depend on the unknown function, and \textbf{nonhomogeneous} otherwise.
+          \end{itemize}
+\end{itemize}
+\subsection{Initial Boundary Value Problems}
+As with ODEs, we can find the general solution to a PDE and then use initial/boundary conditions to solve for arbitrary constants.
+The number of conditions for each independent variable depends on the order of that variable in the PDE\@. Problems with initial and boundary
+conditions are called \textbf{initial boundary value problems} and are often referred to as \textbf{IBVPs}.
+\subsection{Linear Operators and Superposition}
+By linearity, we can write a PDE in terms of linear operators. For example, we can write the PDE
+\begin{equation*}
+    \pdv[order=2]{u}{x} = \pdv{u}{x} + \pdv{u}{t}
+\end{equation*}
+as
+\begin{equation*}
+    L\left( u \right) = \pdv[order=2]{u}{x} - \pdv{u}{x} - \pdv{u}{t} \iff L = \pdv[order=2]{}{x} - \pdv{}{x} - \pdv{}{t}.
+\end{equation*}
+Similary, we can describe initial/boundary conditions as linear or homogeneous.
+\begin{theorem}[Superposition]
+    If \(u_n\), \(n = 1,\: \dots,\: N\) are solutions to the homogeneous PDE \(L\left( u \right) = 0\), then any linear combination
+    of these solutions is a solution to the PDE
+    \begin{equation*}
+        u = \sum_{n = 1}^N c_n u_n
+    \end{equation*}
+    where \(c_n\) are constants.
+\end{theorem}
+The following three sections cover the most common kinds of PDEs and their solutins.
+\subsection{Heat Equation}
+Consider the temperature \(u\left( x,\: t \right)\) of a 1d metal rod of length \(L\) at an initial temperature \(u_0\left( x \right) = u\left( x,\: 0 \right)\) and boundary conditions \(T_1 = u\left( 0,\: t \right)\) and \(T_2 = u\left( L,\: t \right)\).
+If we consider a small section of this rod \(\interval{x_1}{x_2} \in \interval{0}{L}\), then the rate of change of heat \(H\left( x,\: t \right)\) in this section is given by
+\begin{align*}
+    \text{Rate of change of heat energy} & = \text{Flow in} - \text{Flow out}                    \\
+    \int_{x_1}^{x_2} \pdv{H}{t} \odif{x} & = Q\left( x_1,\: t \right) - Q\left( x_2,\: t \right)
+\end{align*}
+where \(Q\left( x,\: t \right)\) is the heat flux at time \(t\).
+
+By making the following assumptions, we can formulate a relationship for the temperature in the rod at position \(x\) at time \(t\).
+\begin{enumerate}
+    \item No energy is lost in the rod.
+    \item The change in heat energy is proportional to the change in temperature (i.e., no phase changes are present), so that the specific heat equation applies.
+          \begin{equation*}
+              \adif{H} = \rho c \adif{u} \iff \pdv{H}{t} = \rho c \pdv{u}{t}
+          \end{equation*}
+          where \(\rho\) is the density of the rod and \(c\) is the specific heat of the rod.
+    \item The material of the rod is homogeneous, and Fourier's law of conduction applies.
+          \begin{equation*}
+              \symbfit{Q} = -\kappa \nabla \symbfit{u} \iff Q = -\kappa \pdv{u}{x}
+          \end{equation*}
+          where \(Q = Q\left( x,\: t \right)\) is the heat flux at time \(t\), and \(\kappa\) is the thermal conductivity of the rod.
+\end{enumerate}
+By substituing these assumptions into the above equation, we can write the PDE as
+\begin{align*}
+    \int_{x_1}^{x_2} \pdv{H}{t} \odif{x}        & = Q\left( x_1,\: t \right) - Q\left( x_2,\: t \right)                               \\
+    \int_{x_1}^{x_2} \rho c \pdv{u}{t} \odif{x} & = \left[ -\kappa \pdv{u}{x} \right]_{x_1} - \left[ -\kappa \pdv{u}{x} \right]_{x_2} \\
+    \int_{x_1}^{x_2} \rho c \pdv{u}{t} \odif{x} & = \left[ \kappa \pdv{u}{x} \right]_{x_2} - \left[ \kappa \pdv{u}{x} \right]_{x_1}   \\
+    \int_{x_1}^{x_2} \rho c \pdv{u}{t} \odif{x} & = \int_{x_1}^{x_2} \pdv*{\kappa \pdv{u}{x}}{x} \odif{x}                             \\
+    \rho c \pdv{u}{t}                           & = \pdv*{\kappa \pdv{u}{x}}{x}                                                       \\
+    \pdv{u}{t}                                  & = \frac{\kappa}{\rho c} \pdv[order=2]{u}{x}.
+\end{align*}
+Simplifying the constants, we get
+\begin{equation*}
+    \pdv{u}{t} = k\pdv[order=2]{u}{x}
+\end{equation*}
+where \(k\) is the thermal diffusivity of the rod. More generally, we can write the PDE as
+\begin{equation*}
+    \pdv{\symbfit{u}}{t} = k \Delta{\symbfit{u}}
+\end{equation*}
+for a multiple spatial dimensions. This PDE is called the heat equation.
+
+The heat equation is first order w.r.t.\ time and second order w.r.t.\ space.
+\subsection{Wave Equation}
+\begin{equation*}
+    \pdv[order=2]{u}{t} = c\pdv[order=2]{u}{x}
+\end{equation*}
+\subsection{Laplace's Equation}
+\begin{equation*}
+    \pdv[order=2]{u}{t} = c \nabla^2 u
+\end{equation*}
+\section{Separation of Variables}
+To solve an IBVP, consider the set of solutions \(u_n\) that satisfy the \textit{homogeneous}
+PDE and the \textit{homogeneous} boundary conditions. Assume a solution of the form
+\begin{equation*}
+    u\left( x,\: t \right) = X\left( x \right) T\left( t \right)
+\end{equation*}
+so that by substitution, the linear homogeneous PDE can be separated into additive terms involving each independant variable.
+This equation has the form:
+\begin{equation*}
+    f_1\left( x,\: X,\: X',\: \dots \right) = f_2\left( t,\: T,\: T',\: \dots \right)
+\end{equation*}
+Then as each term depends on a different variable, the homogeneous equation is only satisfied if each function \(f_i\) evaluates to a scalar \(\alpha_n\).
+Hence
+\begin{align*}
+    f_1\left( x,\: X,\: X',\: \dots \right) & = \alpha_n  \\
+    f_2\left( t,\: T,\: T',\: \dots \right) & = \alpha_n.
+\end{align*}
+Once the homogeneous equation is separated, we must solve the ODEs that depend on variables with which boundary conditions are
+applied. This involves assuming various ranges for \(\alpha_n\), namely, negative, zero or positive, with the aim of
+finding non-trivial solutions.
+
+This will then allow us to solve for the remaining ODEs, and use the linearity of the solutions to superpose them for all values of \(n\).
+We can then apply any initial conditions to this superposed form.
+\subsection{Separation of Variables: Heat Equation}
+\begin{align*}
+    \pdv{u}{t}               & = k\pdv[order=2]{u}{x}     \\
+    \pdv{XT}{t}              & = k\pdv[order=2]{XT}{x}    \\
+    XT'                      & = kX''T                    \\
+    \frac{1}{k} \frac{T'}{T} & = \frac{X''}{X} = \alpha_n
+\end{align*}
+This results in the following two ODEs
+\begin{align*}
+    T' - k \alpha_n T = 0 \\
+    X'' - \alpha_n X = 0
+\end{align*}
+\subsubsection{Spatial Dimension}
+\begin{proofcase}{1. \(\alpha_n > 0\)}\let\qed\relax
+    \begin{align*}
+        m^2 - \alpha_n & = 0                     \\
+        m              & = \pm \sqrt{ \alpha_n }
+    \end{align*}
+    Therefore
+    \begin{equation*}
+        X_n\left( x \right) = c_1 e^{\sqrt{ \alpha_n } x} + c_2 e^{-\sqrt{ \alpha_n } x}.
+    \end{equation*}
+    Applying the BCs gives
+    \begin{align*}
+        X_n\left( 0 \right) & = c_1 + c_2 = 0                                              \\
+        X_n\left( L \right) & = c_1 e^{\sqrt{\alpha_n} L} + c_2 e^{-\sqrt{\alpha_n} L} = 0
+    \end{align*}
+    so that
+    \begin{equation*}
+        \begin{bmatrix*}
+            1 & 1 \\
+            e^{\sqrt{\alpha_n} L} & e^{-\sqrt{\alpha_n} L}
+        \end{bmatrix*}
+        \begin{bmatrix*}
+            c_1 \\
+            c_2
+        \end{bmatrix*}
+        =
+        \begin{bmatrix*}
+            0 \\
+            0
+        \end{bmatrix*}
+    \end{equation*}
+    This homogeneous equation has non-trivial solutions iff the determinant is zero.
+    \begin{align*}
+        \begin{vmatrix*}
+            1 & 1 \\
+            e^{\sqrt{\alpha_n} L} & e^{-\sqrt{\alpha_n} L}
+        \end{vmatrix*} & = 0        \\
+        e^{-\sqrt{\alpha_n} L} - e^{\sqrt{\alpha_n} L}                 & = 0 \\
+        -2\sinh{\left( \sqrt{\alpha_n} L \right)}                      & = 0 \\
+        \alpha_n                                                       & = 0
+    \end{align*}
+    but as \(\alpha_n > 0\), no solutions exist.
+\end{proofcase}
+\begin{proofcase}{2. \(\alpha_n = 0\)}\let\qed\relax
+    \begin{equation*}
+        X_n\left( x \right) = c_1 x + c_2.
+    \end{equation*}
+    Applying the BCs gives
+    \begin{align*}
+        X_n\left( 0 \right) & = c_2 = 0                                        \\
+        X_n\left( L \right) & = c_1 e^{\sqrt{\alpha_n} L} = 0 \implies c_1 = 0
+    \end{align*}
+    hence there are no non-trivial solutions as \(X_n \equiv 0\).
+\end{proofcase}
+\begin{proofcase}{3. \(\alpha_n < 0\)}\let\qed\relax
+    \begin{align*}
+        m^2 + \alpha_n & = 0                      \\
+        m              & = \pm \sqrt{-\alpha_n} i \\
+    \end{align*}
+    therefore
+    \begin{equation*}
+        X_n\left( x \right) = c_1 \cos{\left( \sqrt{-\alpha_n} x \right)} + c_2 \sin{\left( \sqrt{-\alpha_n} x \right)}.
+    \end{equation*}
+    Applying the BCs gives
+    \begin{align*}
+        X_n\left( 0 \right) & = c_1 = 0                                         \\
+        X_n\left( L \right) & = c_2 \sin{\left( \sqrt{-\alpha_n} L \right)} = 0
+    \end{align*}
+    therefore
+    \begin{align*}
+        \sqrt{-\alpha_n} L & = n \pi                  \\
+        \alpha_n           & = -\frac{n^2 \pi^2}{L^2}
+    \end{align*}
+    which gives the following family of solutions:
+    \begin{equation*}
+        X_n\left( x \right) = c_2 \sin{\left( \frac{n \pi}{L} x \right)}
+    \end{equation*}
+\end{proofcase}
+\subsubsection{Time Dimension}
+Substituting \(\alpha_n = -\frac{n^2 \pi^2}{L^2}\) into the time ODE gives
+\begin{align*}
+    m - k \alpha_n & = 0          \\
+    m              & = k \alpha_n
+\end{align*}
+therefore
+\begin{equation*}
+    T_n\left( t \right) = c_3 e^{-\frac{n^2 \pi^2 k}{L^2} t}
+\end{equation*}
+\subsubsection{General Solution}
+Given these two functions we can solve for \(u_n\) as
+\begin{align*}
+    u_n\left( x,\: t \right) = A_n \sin{\left( \frac{n \pi}{L} x \right)} e^{-\frac{n^2 \pi^2 k}{L^2} t}
+\end{align*}
+then by applying superposition, we find the general solution to the PDE\@:
+\begin{equation*}
+    u\left( x,\: t \right) = \sum_{n = 1}^\infty u_n\left( x,\: t \right) = \sum_{n = 1}^\infty A_n \sin{\left( \frac{n \pi}{L} x \right)} e^{-\frac{n^2 \pi^2 k}{L^2} t}.
+\end{equation*}
+Applying the initial conditions gives
+\begin{align*}
+    u_n\left( x,\: 0 \right) = \sum_{n = 1}^\infty A_n \sin{\left( \frac{n \pi}{L} x \right)} = u_0
+\end{align*}
+so that the coefficients \(A_n\) are given by the Fourier sine coefficients of the initial condition \(u_0\).
+Finally, the general solution to the PDE is given by
+\begin{equation*}
+    u\left( x,\: t \right) = \sum_{n = 1}^\infty A_n \sin{\left( \frac{n \pi}{L} x \right)} e^{-\frac{n^2 \pi^2 k}{L^2} t}, \quad \quad A_n = \frac{2}{L} \int_0^L u_0 \sin{\left( \frac{n \pi}{L} x \right)} \odif{x}.
+\end{equation*}
+We observe that as time tends to infinity, the solution approaches \(0\) as the exponential term
+becomes \(1\). We can therefore approximate the solution at this time with 
+\begin{equation*}
+    u\left( x,\: \infty \right) \approx A_1 \sin{\left( \frac{\pi}{L} x \right)}.
+\end{equation*}
 \end{document}
