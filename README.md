@@ -23,6 +23,8 @@ This repository provides **lecture notes** and **exam notes** for **MXB322 - Par
 ## Contents
 
 1. Fourier Series
+2. Partial Differential Equations
+3. Separation of Variables
 
 ---
 
