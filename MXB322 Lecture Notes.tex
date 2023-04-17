@@ -148,7 +148,7 @@ For \(a_0\) consider integrating \hyperref[eq:fourier]{Equation~\ref{eq:fourier}
 so that \(a_0\) represents the average value of \(f\) on \(\interval{-L}{L}\).
 \subsubsection{For \texorpdfstring{\(a_n\)}{an}}
 For coefficients \(a_m\), multiply the equation by \(\cos{\left( \frac{m \pi x}{L} \right)}\) before integrating.
-\begin{align*}z
+\begin{align*}
     f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
                                                                                           a_0 \cos{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \\
                                                                                                                                      & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)}
@@ -764,42 +764,26 @@ The problem for \(Y\) yields the following solution:
     Y\left( y \right) = Y_n\left( y \right) = A_n \cosh{\left( n \pi y \right)} + B_n \sinh{\left( n \pi y \right)}.
 \end{equation*}
 \subsubsection{General Solution}
-Given these two functions, we find two solutions for \(u_n\)
+Given these two functions, we can use superposition to find
 \begin{align*}
-    u_n\left( x,\: y \right) = \cos{\left( \frac{n \pi}{L} x \right)} \left[ A_n \cos{\left( \frac{n \pi}{L} c t \right)} + B_n \sin{\left( \frac{n \pi}{L} c t \right)} \right].
+    u\left( x,\: y \right) = \sum_{n = 1}^\infty X_n\left( x \right) Y_n\left( y \right) = \sum_{n = 1}^\infty \left[ A_n \cosh{\left( n \pi y \right)} + B_n \sinh{\left( n \pi y \right)} \right] \sin{\left( n \pi x \right)}.
 \end{align*}
-for \(\alpha_n < 0\), and also
+We can now apply the boundary conditions in \(y\). At \(y = 0\)
 \begin{align*}
-    u_0\left( x,\: t \right) = A_0 + B_0 t
+    u\left( x,\: 0 \right) = \sum_{n = 1}^\infty A_n \sin{\left( n \pi x \right)} = 0 \implies A_n = 0
 \end{align*}
-for \(\alpha_n = 0\), where \(u_0\) does not depend on \(n\).
-By applying superposition, we find the general solution to the PDE\@:
-\begin{equation*}
-    u\left( x,\: t \right) = u_0\left( x,\: t \right) + \sum_{n = 1}^\infty u_n\left( x,\: t \right) = A_0 + B_0 t + \sum_{n = 1}^\infty \cos{\left( \frac{n \pi}{L} x \right)} \left[ A_n \cos{\left( \frac{n \pi}{L} c t \right)} + B_n \sin{\left( \frac{n \pi}{L} c t \right)} \right].
-\end{equation*}
-Applying the initial conditions gives
+At \(y = 1\):
 \begin{align*}
-    u_n\left( x,\: 0 \right) = A_0 + \sum_{n = 1}^\infty A_n \cos{\left( \frac{n \pi}{L} x \right)} = f\left( x \right)
+    u\left( x,\: 1 \right) = \sum_{n = 1}^\infty B_n \sinh{\left( n \pi \right)} \sin{\left( n \pi x \right)} = x^2
 \end{align*}
-so that the coefficients \(A_n\) are given by the Fourier cosine coefficients of the initial condition \(f\left( x \right)\).
-
-Applying the second initial condition requires the first derivative w.r.t.\ \(x\):
+Here we can use the sine series expansion of \(x^2\) where the coefficient is now multiplied by \(\sinh{\left( n \pi \right)}\).
+Therefore,
 \begin{equation*}
-    \pdv{u\left( x,\: t \right)}{x} = B_0 + \sum_{n = 1}^\infty \frac{n \pi}{L} c \cos{\left( \frac{n \pi}{L} x \right)} \left[ B_n \cos{\left( \frac{n \pi}{L} c t \right)} - A_n \sin{\left( \frac{n \pi}{L} c t \right)} \right]
+    u\left( x,\: y \right) = \sum_{n = 1}^\infty B_n \sinh{\left( n \pi y \right)} \sin{\left( n \pi x \right)}
 \end{equation*}
-so that
+with
 \begin{equation*}
-    \pdv{u}{x}\left( x,\: 0 \right) = B_0 + \sum_{n = 1}^\infty \frac{n \pi}{L} c B_n \cos{\left( \frac{n \pi}{L} x \right)} = 0.
-\end{equation*}
-In this case, a zero initial velocity requires \(B_0 = B_n = 0\).
-
-Therefore, the solution to the IBVP is given by
-\begin{equation*}
-    u\left( x,\: t \right) = A_0 + \sum_{n = 1}^\infty A_n \cos{\left( \frac{n \pi}{L} x \right)} \cos{\left( \frac{n \pi}{L} c t \right)},
-\end{equation*}
-where
-\begin{equation*}
-    A_0 = \frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x}, \quad\quad A_n = \frac{2}{L} \int_{-L}^{L} f\left( x \right) \cos{\left( \frac{n \pi}{L} x \right)} \odif{x}.
+    B_n \sinh{\left( n \pi \right)} = 2 \int_0^1 x^2 \sin{\left( n \pi x \right)} \odif{x}.
 \end{equation*}
 \section{Sturm-Liouville Theory}
 Sturm-Liouville theory is used to solve real second-order linear ODEs of the form:
@@ -807,15 +791,100 @@ Sturm-Liouville theory is used to solve real second-order linear ODEs of the for
     \odv{}{x} \left[ p\left( x \right) \odv{y}{x} \right] + q\left( x \right) y + \lambda w\left( x \right) y = 0,
 \end{equation*}
 with the boundary conditions
+\begin{align*}
+    -l_1 y'\left( a \right) + h_1 y\left( a \right) & = 0 \\
+    -l_2 y'\left( b \right) + h_2 y\left( b \right) & = 0
+\end{align*}
+where both boundary conditions must be non-trivial (\(l\) or \(h\) is non-zero). A Sturm-Liouville problem is
+\textbf{regular} when \(p\left( x \right), w\left( x \right) > 0\), and \(p'\left( x \right), p\left( x \right), w\left( x \right)\) are continuous
+over the interval \(\interval{a}{b}\).
+
+A second-order ODE of the form
 \begin{equation*}
-    \begin{cases*}
-        l_1 y'\left( a \right) + h_1 y\left( a \right) = 0 \\
-        l_2 y'\left( b \right) + h_2 y\left( b \right) = 0
-    \end{cases*}
+    a_2\left( x \right) y''\left( x \right) + a_1\left( x \right) y'\left( x \right) + a_0\left( x \right) y\left( x \right) = 0
 \end{equation*}
-where both boundary conditions must be non-trivial (\(l\) or \(h\) is non-zero). Additionally,
-\(w\left( x \right) > 0\) is known as the weight function with which the inner product is computed.
-\section{Polar Coordinates}
+can be converted into SL form by multiplying the ODE by the integrating factor
+\begin{equation*}
+    \mu = \exp{\left( \int \frac{a_1}{a_2} \odif{x} \right)}.
+\end{equation*}
+\subsection{Weighted Inner Product}
+The function \(w\left( x \right) > 0\) is known as the \textbf{weight function} with which we can define the inner product:
+\begin{equation*}
+    \abracket*{f,\: g}_{w} = \int_a^b f\left( x \right) g\left( x \right) w\left( x \right) \odif{x}.
+\end{equation*}
+\subsection{Eigenvalue Problem}
+By defining the mapping:
+\begin{equation*}
+    u \mapsto - \frac{1}{w\left( x \right)} \left( \odv{}{x} \left[ p\left( x \right) \odv{u}{x} \right] + q\left( x \right) u \right)
+\end{equation*}
+with the linear operator \(L\), we can consider the associated eigenvalue problem of
+the Sturm-Liouville system:
+\begin{equation*}
+    L u = \lambda u.
+\end{equation*}
+\subsection{Self-Adjointness}
+Here we recognise that \(L\) is a \textbf{self-adjoint} operator, such that:
+\begin{equation*}
+    \abracket*{Lf,\: g}_{w} = \abracket*{f,\: Lg}_{w}.
+\end{equation*}
+\subsection{Orthogonality}
+It then follows that all solutions to this ODE produce an infinite number of real \textbf{eigenvalues} \(\lambda_i\),
+where \(\lambda_n \to \infty\) as \(n \to \infty\), where the corresponding \textbf{eigenfunctions} \(u_i\) of \(L\)
+are \textbf{orthogonal} with respect to the weighted inner product.
+
+Taking the weighted inner product between normalised eigenfunctions shows that
+\begin{equation*}
+    \abracket*{y_n,\: y_m} = \int_a^b y_n\left( x \right) y_m\left( x \right) w\left( x \right) \odif{x} = \delta_{mn}
+\end{equation*}
+where \(\delta_{mn}\) is the Kronecker delta.
+\subsection{Sign of Eigenvalues}
+A \textbf{proper} Sturm-Liouville system is a system in which \(q\left( x \right) \geqslant 0\) on \(\interval{a}{b}\),
+with \(l_1h_1 \geqslant 0\) and \(l_2h_2 \geqslant 0\).
+All eigenvalues of a proper Sturm-Liouville system are non-negative.
+\subsection{Singular and Periodic Sturm-Liouville Systems}
+\begin{itemize}
+    \item When \(r\left( a \right) = 0\), and the BC at \(x = a\) is replaced by the condition that \(y\) remain bounded; the
+          system is \textbf{singular}\footnote{The same applies with the boundary condition at \(x = b\)}.
+    \item If instead of the BCs we have:
+          \begin{equation*}
+              p\left( a \right) = p\left( b \right) \quad \text{and} \quad p'\left( a \right) = p'\left( b \right)
+          \end{equation*}
+          then we have a \textbf{periodic} system, where \(y\) must also be periodic.
+\end{itemize}
+\subsection{Eigenfunction Expansions}
+If we treat the set of eigenfunctions of a Sturm-Liouville system as
+a \textbf{basis}, we can write a given function \(f\) as a linear combination
+of eigenfunctions. Given an orthogonal basis \(\left\{ y_n\left( x \right) : n \in \Z^{+} \right\}\),
+the eigenfunction expansion of \(f\) is given by
+\begin{equation*}
+    f_E\left( x \right) = \sum_{n = 1}^\infty c_n y_n\left( x \right)
+\end{equation*}
+with
+\begin{equation*}
+    c_n = \frac{\abracket*{f_E,\: y_n}_w}{\abracket*{y_n,\: y_n}_w} = \frac{\abracket*{f_E,\: y_n}_w}{\norm*{y_n}^2}.
+\end{equation*}
+where the usual definition of the norm applies:
+\begin{equation*}
+    \norm*{y_n} = \sqrt{\abracket*{y_n,\: y_n}}.
+\end{equation*}
+To prove this, consider the inner product of the function \(f\) with
+a particular eigenfunction \(y_m\):
+\begin{align*}
+    f\left( x \right)      & = \sum_{n = 1}^\infty c_n y_n\left( x \right)                \\
+    \abracket*{f,\: y_m}_w & = \sum_{n = 1}^\infty c_n \abracket*{y_n,\: y_m}_w           \\
+    \abracket*{f,\: y_m}_w & = c_m \abracket*{y_m,\: y_m}_w                               \\
+    c_m                      & = \frac{\abracket*{f,\: y_m}_w}{\abracket*{y_m,\: y_m}_w}.
+\end{align*}
+This result generalises the Fourier series expansion introduced in Section 1, as our basis
+is no longer restricted to trigonometric functions.
+\subsubsection{Convergence}
+As with Fourier series, \(f_E\) does not necessarily converge to \(f\). For instance,
+if \(f\) is piecewise smooth,
+\begin{equation*}
+    f_E\left( x \right) = \lim_{\epsilon \to 0^+} \frac{f\left( x + \epsilon \right) + f\left( x - \epsilon \right)}{2}
+\end{equation*}
+for \(a < x < b\).
+% \section{Polar Coordinates}
 % \section{Nonhomogeneous Problems}
 % \section{Fourier Transform}
 % \section{Laplace Transform}
