@@ -235,7 +235,7 @@ The Fourier series simplifies to
 \begin{equation*}
     f_F = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)}
 \end{equation*}
-where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
+where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \cos{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
 These special cases are known as the sine and cosine series expansions respectively, resulting in the \textbf{odd} or \textbf{even} periodic extension of \(f\).
 \section{Partial Differential Equations}
 A partial differential equation (PDE) is a differential equation that must be solved for an unknown function of at least two independent variables,
@@ -397,7 +397,7 @@ To solve an IBVP consider the following:
 \begin{enumerate}
     \item Assume a set of solutions of the form
           \begin{equation*}
-              u_n\left( x,\: t \right) = X_n\left( x \right) \cdots T_n\left( t \right).
+              u_n\left( x,\: t \right) = X_n\left( x \right) T_n\left( t \right).
           \end{equation*}
     \item Substitute \(u_n\) into the homogeneous PDE and separate
           \begin{equation*}
@@ -793,10 +793,10 @@ Sturm-Liouville theory is used to solve real second-order linear ODEs of the for
 with the boundary conditions
 \begin{align*}
     -l_1 y'\left( a \right) + h_1 y\left( a \right) & = 0 \\
-    -l_2 y'\left( b \right) + h_2 y\left( b \right) & = 0
+    l_2 y'\left( b \right) + h_2 y\left( b \right) & = 0
 \end{align*}
 where both boundary conditions must be non-trivial (\(l\) or \(h\) is non-zero). A Sturm-Liouville problem is
-\textbf{regular} when \(p\left( x \right), w\left( x \right) > 0\), and \(p'\left( x \right), p\left( x \right), w\left( x \right)\) are continuous
+\textbf{regular} when \(p\left( x \right), w\left( x \right) > 0\), and \(p\left( x \right), p'\left( x \right), q\left( x \right), w\left( x \right)\) are continuous
 over the interval \(\interval{a}{b}\).
 
 A second-order ODE of the form
@@ -805,7 +805,7 @@ A second-order ODE of the form
 \end{equation*}
 can be converted into SL form by multiplying the ODE by the integrating factor
 \begin{equation*}
-    \mu = \exp{\left( \int \frac{a_1}{a_2} \odif{x} \right)}.
+    \mu = \frac{1}{a_2} \exp{\left( \int \frac{a_1}{a_2} \odif{x} \right)}.
 \end{equation*}
 \subsection{Weighted Inner Product}
 The function \(w\left( x \right) > 0\) is known as the \textbf{weight function} with which we can define the inner product:
@@ -838,12 +838,12 @@ Taking the weighted inner product between normalised eigenfunctions shows that
 \end{equation*}
 where \(\delta_{mn}\) is the Kronecker delta.
 \subsection{Sign of Eigenvalues}
-A \textbf{proper} Sturm-Liouville system is a system in which \(q\left( x \right) \geqslant 0\) on \(\interval{a}{b}\),
+A \textbf{proper} Sturm-Liouville system is a system in which \(q\left( x \right) \leqslant 0\) on \(\interval{a}{b}\),
 with \(l_1h_1 \geqslant 0\) and \(l_2h_2 \geqslant 0\).
 All eigenvalues of a proper Sturm-Liouville system are non-negative.
 \subsection{Singular and Periodic Sturm-Liouville Systems}
 \begin{itemize}
-    \item When \(r\left( a \right) = 0\), and the BC at \(x = a\) is replaced by the condition that \(y\) remain bounded; the
+    \item When \(p\left( a \right) = 0\), and the BC at \(x = a\) is replaced by the condition that \(y\) remain bounded; the
           system is \textbf{singular}\footnote{The same applies with the boundary condition at \(x = b\)}.
     \item If instead of the BCs we have:
           \begin{equation*}
@@ -870,10 +870,10 @@ where the usual definition of the norm applies:
 To prove this, consider the inner product of the function \(f\) with
 a particular eigenfunction \(y_m\):
 \begin{align*}
-    f\left( x \right)      & = \sum_{n = 1}^\infty c_n y_n\left( x \right)                \\
-    \abracket*{f,\: y_m}_w & = \sum_{n = 1}^\infty c_n \abracket*{y_n,\: y_m}_w           \\
-    \abracket*{f,\: y_m}_w & = c_m \abracket*{y_m,\: y_m}_w                               \\
-    c_m                      & = \frac{\abracket*{f,\: y_m}_w}{\abracket*{y_m,\: y_m}_w}.
+    f\left( x \right)      & = \sum_{n = 1}^\infty c_n y_n\left( x \right)              \\
+    \abracket*{f,\: y_m}_w & = \sum_{n = 1}^\infty c_n \abracket*{y_n,\: y_m}_w         \\
+    \abracket*{f,\: y_m}_w & = c_m \abracket*{y_m,\: y_m}_w                             \\
+    c_m                    & = \frac{\abracket*{f,\: y_m}_w}{\abracket*{y_m,\: y_m}_w}.
 \end{align*}
 This result generalises the Fourier series expansion introduced in Section 1, as our basis
 is no longer restricted to trigonometric functions.
@@ -884,10 +884,160 @@ if \(f\) is piecewise smooth,
     f_E\left( x \right) = \lim_{\epsilon \to 0^+} \frac{f\left( x + \epsilon \right) + f\left( x - \epsilon \right)}{2}
 \end{equation*}
 for \(a < x < b\).
-% \section{Polar Coordinates}
-% \section{Nonhomogeneous Problems}
-% \section{Fourier Transform}
-% \section{Laplace Transform}
+\section{Polar Coordinates}
+When considering problems posed on circular regions, we can apply coordinate transformation to solve problems using polar coordinates.
+Recall that we can write \(x\) and \(y\) in terms of \(r\) and \(\theta\):
+\begin{equation*}
+    x = r \cos{\left( \theta \right)}, \quad y = r \sin{\left( \theta \right)} \quad \iff \quad r = \sqrt{x^2 + y^2}, \quad \theta = \arctan{\left( \frac{y}{x} \right)}.
+\end{equation*}
+This allows us to express partial derivatives of \(u\left( x, \: y \right)\) in terms of \(r\) and \(\theta\) using the multivariable chain rule:
+\begin{align*}
+    \pdv{u}{x} & = \pdv{u}{r} \pdv{r}{x} + \pdv{u}{\theta} \pdv{\theta}{x}                                        \\
+               & = \frac{2x}{\sqrt{x^2 + y^2}} \pdv{u}{r} + \frac{-y/x^2}{1+\left( y/x \right)^2} \pdv{u}{\theta} \\
+               & = \frac{2x}{r} \pdv{u}{r} + \frac{-y}{r^2} \pdv{u}{\theta}
+\end{align*}
+and
+\begin{align*}
+    \pdv{u}{y} & = \pdv{u}{r} \pdv{r}{y} + \pdv{u}{\theta} \pdv{\theta}{y}                                     \\
+               & = \frac{2y}{\sqrt{x^2 + y^2}} \pdv{u}{r} + \frac{1/x}{1+\left( y/x \right)^2} \pdv{u}{\theta} \\
+               & = \frac{2y}{r} \pdv{u}{r} + \frac{x}{r^2} \pdv{u}{\theta}.
+\end{align*}
+\subsection{The Laplacian in Polar Coordinates}
+Recall Laplace's equation in Cartesian coordinates
+\begin{equation*}
+    \nabla^2 u = \pdv[order=2]{u}{x} + \pdv[order=2]{u}{y}.
+\end{equation*}
+By using the multivariable chain rule, we can express the Laplacian in terms of \(r\) and \(\theta\):
+\begin{equation*}
+    \nabla^2 u = \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta}.
+\end{equation*}
+\subsection{Laplace's Equation in Polar Coordinates}
+Consider the following example of Laplace's equation on a disk of radius \(a\):
+\begin{equation*}
+    \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta} = 0, \quad\quad 0 \leq r < a, -\pi < \theta \leq \pi,
+\end{equation*}
+for \(u = u\left( r,\: \theta \right)\) with the following boundary condition on \(r = a\):
+\begin{equation*}
+    u\left( a,\: \theta \right) = f\left( \theta \right).
+\end{equation*}
+Here consider a solution of the form
+\begin{equation*}
+    u\left( r,\: \theta \right) = R\left( r \right) \Theta\left( \theta \right)
+\end{equation*}
+so that
+\begin{align*}
+    u_{rr} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta}                        & = 0                                      \\
+    R''\Theta + \frac{1}{r} R'\Theta + \frac{1}{r^2} R\Theta''                       & = 0                                      \\
+    \frac{R''}{R} + \frac{1}{r} \frac{R'}{R} + \frac{1}{r^2} \frac{\Theta''}{\Theta} & = 0                                      \\
+    \frac{R''}{R} + \frac{1}{r} \frac{R'}{R}                                         & = -\frac{1}{r^2} \frac{\Theta''}{\Theta} \\
+    r^2 \frac{R''}{R} + r \frac{R'}{R}                                               & = -\frac{\Theta''}{\Theta} = - \alpha
+\end{align*}
+therefore
+\begin{align*}
+    r^2 R'' + r R' + \alpha R & = 0 \\
+    \Theta'' - \alpha \Theta & = 0.
+\end{align*}
+\subsubsection{Periodicity}
+To identify the Sturm-Liouville problem, we require a homogeneous equation
+with homogeneous boundary conditions.
+As \(u\) is defined on a circular disk, it must satisfy the following condition of
+periodicity:
+\begin{equation*}
+    u\left( r,\: \theta \right) = u\left( r,\: \theta + 2\pi \right).
+\end{equation*}
+Additionally, as \(u\) is defined in terms of two separable functions,
+\(u = R \Theta\), this periodicity must also hold in \(\Theta\):
+\begin{equation*}
+    \Theta\left( \theta \right) = \Theta\left( \theta + 2\pi \right).
+\end{equation*}
+Solving for \(\Theta\) reveals that only \(\alpha_n \leqslant 0\) has
+periodic solutions, therefore for \(n = 1, 2, \ldots\) we have
+\begin{equation*}
+    \Theta_0 = 1, \quad\quad \Theta_{n1} = \cos{\left( n\theta \right)}, \quad\quad \Theta_{n2} = \sin{\left( n\theta \right)}.
+\end{equation*}
+where \(\alpha_n = -n^2\). Therefore, unlike the previous examples, each eigenvalue
+has two linearly independent eigenfunctions. Solving the problem in \(R\) yields
+the Cauchy-Euler equation:
+\begin{equation*}
+    r^2 R'' + r R' - n^2 R = 0.
+\end{equation*}
+By assuming \(R = r^m\), we find \(m = \pm n\). If we consider positive values of \(n\):
+\begin{equation*}
+    R_n = c_1 r^n + c_2 r^{-n}.
+\end{equation*}
+However, when \(n = 0\),
+\begin{equation*}
+    R_0 = c_1 \ln{\left( r \right)} + c_2.
+\end{equation*}
+\subsubsection{Boundedness}
+As \(u\) is defined on a circular disk, it must be bounded at \(r = 0\).
+Therefore, \(R_n\) must be bounded at \(r = 0\), which implies that in the first solution,
+\(c_2 = 0\), and in the second solution, \(c_1 = 0\). This results in
+\begin{equation*}
+    R_0 = c_2, \quad\quad R_n = c_1 r^n.
+\end{equation*}
+By applying superposition,
+\begin{equation*}
+    u\left( r,\: \theta \right) = A_0 + \sum_{n = 1}^\infty \left[ A_n r_n \cos{\left( n \theta \right)} + B_n r_n \sin{\left( n \theta \right)} \right].
+\end{equation*}
+\subsubsection{Boundary Conditions}
+Assuming \(u\left( a,\: \theta \right) = f\left( \theta \right)\), we have
+\begin{equation*}
+    u\left( a,\: \theta \right) = f\left( \theta \right) = A_0 + \sum_{n = 1}^\infty \left[ A_n a^n \cos{\left( n \theta \right)} + B_n a^n \sin{\left( n \theta \right)} \right]
+\end{equation*}
+where \(A_0\), \(A_n a^n\), and \(B_n a^n\) are the Fourier coefficients of \(f\left( \theta \right)\).
+\section{Nonhomogeneous Problems}
+Nonhomogeneous PDEs are problems that involve a linear PDE of the form:
+\begin{equation*}
+    L u = F
+\end{equation*}
+possibly with a boundary condition of the form:
+\begin{equation*}
+    u\left( c,\: t \right) = a\left( t \right).
+\end{equation*}
+\subsection{Steady-State and Transient Solutions}
+For \textbf{time-independent} non-homogeneities (i.e., when \(F = F\left( x \right)\)), we can separate the solution of a nonhomogeneous PDE into a \textbf{steady-state solution}, which is found by setting the time
+derivative to zero, and a \textbf{transient solution}, which will satisfy the homogeneous PDE and boundary conditions.
+The steady-state solution takes the form,
+\begin{equation*}
+    u\left( x,\: t \right) = U\left( x \right),
+\end{equation*}
+where \(U\left( x \right)\) satisfies the PDE and boundary conditions, but not the initial condition for \(u\left( x,\: t \right)\).
+
+To find the evolution of a system from an initial condition \(u\left( x,\: 0 \right) = f\left( x \right)\),
+we need to find a transient solution \(v\left( x,\: t \right)\):
+\begin{equation*}
+    v\left( x,\: t \right) = u\left( x,\: t \right) - U\left( x \right).
+\end{equation*}
+This solution satisfies the general solution
+\begin{equation*}
+    u\left( x,\: t \right) = v\left( x,\: t \right) + U\left( x \right).
+\end{equation*}
+After substitution, \(u\left( x,\: t \right)\) will be transformed into an homogeneous PDE that
+can be solved using the methods described in the previous sections.
+\subsection{Eigenfunction Expansion}
+For a general nonhomogeneous term \(F = F\left( x,\: t \right)\), we assume that the solution will take
+the form of an eigenfunction expansion in one variable, where the eigenfunctions are those that come from the homogeneous
+version of the problem, and the unknown coefficients are functions of the other variable.
+
+Here the boundary conditions must be homogeneous, and therefore, the PDE must be
+transformed (i.e., via a subtraction), to cancel any nonhomogeneous terms.
+This can be done by choosing an appropriate \(v\left( x,\: t \right)\)
+which yields a new PDE.
+\section{The Fourier Transform}
+The Fourier series approximation is defined on the finite domain \(\interval{-L}{L}\), where
+the approximation \(f_F\) is periodically extended outside of this domain. The Fourier transform
+considers the limiting process \(L \to \infty\) to obtain a transform defined on the infinite domain \(\ointerval{-\infty}{\infty}\).
+
+Let \(\omega_n = \frac{n \pi}{L}\) for \(n \in \Z\) so that \(\fdif{\omega} = \omega_{n + 1} - \omega_n = \frac{\pi}{L}\).
+Then as \(L \to \infty\), \(\fdif{\omega} \to 0\). If we multiply the Fourier series approximation of \(f\left( x \right)\) by \(\fdif{\omega}\), then
+
+\begin{equation*}
+    \lim_{L \to \infty} f_F\left( x \right) = \lim_{}\frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x} + \sum_{n = 1}^\infty \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{n \pi x}{L} \right)} \odif{x} \cos{\left( \frac{n \pi x}{L} \right)} + \sum_{n = 1}^\infty \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x} \sin{\left( \frac{n \pi x}{L} \right)}
+\end{equation*}
+The Fourier series approximation of \(f\left( x \right)\) is given by
+
+% \section{The Laplace Transform}
 % \section{Complex Analysis}
 % \section{Inverse Transforms}
 \end{document}
