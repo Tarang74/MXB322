@@ -49,9 +49,11 @@
 \begin{definition}[Fourier series expansion]
     The \textbf{Fourier series expansion} of \(f\) represents \(f\) by a periodic function using trigonometric (sine and cosine) terms.
 
-    Suppose a function \(f\left( x \right)\) is defined on an interval \(\interval{-L}{L}\), then
-    the Fourier series expansion of \(f\) is given by:
-    \begin{equation}\label{eq:fourier}
+    Suppose a function \(f\left( x \right)\) is defined on an interval
+    \(\interval{-L}{L}\), then the Fourier series expansion of \(f\) is
+    given by:
+    \begin{equation}
+        \label{eq:fourier}
         f_F\left( x \right) = a_0 + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)}
     \end{equation}
     so that \(f = f_F\) on \(\interval{-L}{L}\). Note that \(f = f_F\) may not hold for all \(x\) as \(f_F\) is periodic and the convergence of the series is not guaranteed.
@@ -93,7 +95,8 @@ When:
 \end{itemize}
 Therefore
 \begin{equation*}
-    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = \begin{cases}
+    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} =
+    \begin{cases}
         0, & n \neq m \\
         L, & n = m
     \end{cases}
@@ -104,7 +107,8 @@ Therefore
 \end{equation*}
 By the same argument,
 \begin{equation*}
-    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} = \begin{cases}
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} =
+    \begin{cases}
         0, & n \neq m \\
         L, & n = m
     \end{cases}
@@ -126,14 +130,18 @@ In summary:
 \begin{align}
     \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \odif{x}                                        & = 0 \label{eq:cosine} \\
     \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \odif{x}                                        & = 0 \label{eq:sine}   \\
-    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{cases}
-                                                                                                               0, & n \neq m \\
-                                                                                                               L, & n = m
-                                                                                                           \end{cases}       \\
-    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{cases}
-                                                                                                               0, & n \neq m \\
-                                                                                                               L, & n = m
-                                                                                                           \end{cases}       \\
+    \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & =
+    \begin{cases}
+        0, & n \neq m \\
+        L, & n = m
+    \end{cases}
+    \\
+    \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & =
+    \begin{cases}
+        0, & n \neq m \\
+        L, & n = m
+    \end{cases}
+    \\
     \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = 0
 \end{align}
 
@@ -149,29 +157,37 @@ so that \(a_0\) represents the average value of \(f\) on \(\interval{-L}{L}\).
 \subsubsection{For \texorpdfstring{\(a_n\)}{an}}
 For coefficients \(a_m\), multiply the equation by \(\cos{\left( \frac{m \pi x}{L} \right)}\) before integrating.
 \begin{align*}
-    f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
-                                                                                          a_0 \cos{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \\
-                                                                                                                                     & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)}
-                                                                                      \end{aligned}                                                                                        \\
-    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{aligned}[t]
-                                                                                          a_0 \cancelto{0}{\int_{-L}^L \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}               \\
-                                                                                                                                                                        & + \sum_{n = 1}^\infty b_n \cancelto{0}{\int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}}
-                                                                                      \end{aligned} \\
-    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = a_m L                                                                                                                                                                                                                     \\
+    f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)}                      & =
+    \begin{aligned}[t]
+        a_0 \cos{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \\
+                                                   & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)}
+    \end{aligned}
+    \\
+    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & =
+    \begin{aligned}[t]
+        a_0 \cancelto{0}{\int_{-L}^L \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}               \\
+                                                                                      & + \sum_{n = 1}^\infty b_n \cancelto{0}{\int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}}
+    \end{aligned}
+    \\
+    \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = a_m L                                                                                     \\
     a_m                                                                           & = \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{m \pi x}{L} \right)} \odif{x}
 \end{align*}
 \subsubsection{For \texorpdfstring{\(b_n\)}{bn}}
 For coefficients \(b_m\), multiply the equation by \(\sin{\left( \frac{m \pi x}{L} \right)}\) before integrating.
 \begin{align*}
-    f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)}                      & = \begin{aligned}[t]
-                                                                                          a_0 \sin{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \\
-                                                                                                                                     & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)}
-                                                                                      \end{aligned}                                                                                                      \\
-    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = \begin{aligned}[t]
-                                                                                          a_0 \cancelto{0}{\int_{-L}^L \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \cancelto{0}{\int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} \\
-                                                                                                                                                                        & + \sum_{n = 1}^\infty b_n \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
-                                                                                      \end{aligned} \\
-    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = b_m L                                                                                                                                                                                                                                   \\
+    f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)}                      & =
+    \begin{aligned}[t]
+        a_0 \sin{\left( \frac{m \pi x}{L} \right)} & + \sum_{n = 1}^\infty a_n \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \\
+                                                   & + \sum_{n = 1}^\infty b_n \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)}
+    \end{aligned}
+    \\
+    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & =
+    \begin{aligned}[t]
+        a_0 \cancelto{0}{\int_{-L}^L \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} & + \sum_{n = 1}^\infty a_n \cancelto{0}{\int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}} \\
+                                                                                      & + \sum_{n = 1}^\infty b_n \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
+    \end{aligned}
+    \\
+    \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x} & = b_m L                                                                                     \\
     b_m                                                                           & = \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{m \pi x}{L} \right)} \odif{x}
 \end{align*}
 To summarise,
@@ -238,33 +254,47 @@ The Fourier series simplifies to
 where \(a_0 = \frac{1}{L} \int_0^L f\left( x \right) \odif{x}\) and \(a_n = \frac{2}{L} \int_0^L f\left( x \right) \cos{\left( \frac{n \pi x}{L} \right)} \odif{x}\).
 These special cases are known as the sine and cosine series expansions respectively, resulting in the \textbf{odd} or \textbf{even} periodic extension of \(f\).
 \section{Partial Differential Equations}
-A partial differential equation (PDE) is a differential equation that must be solved for an unknown function of at least two independent variables,
-where the equation contains partial derivatives of the unknown function.
-PDEs are characterised by several properties:
+A partial differential equation (PDE) is a differential equation that
+must be solved for an unknown function of at least two independent
+variables, where the equation contains partial derivatives of the
+unknown function. PDEs are characterised by several properties:
 \begin{itemize}
-    \item The \textbf{order} of the PDE is the order of the highest derivative in the equation.
-          Furthermore, each independent variable can be described by its order.
-    \item A PDE is \textbf{linear} if it is linear in its unknown function and its derivatives.
+    \item The \textbf{order} of the PDE is the order of the highest
+          derivative in the equation. Furthermore, each independent
+          variable can be described by its order.
+    \item A PDE is \textbf{linear} if it is linear in its unknown
+          function and its derivatives.
           \begin{itemize}
-              \item A linear PDE has \textbf{constant} coefficients if the coefficients of the linear terms do not depend on the independent variables, and has \textbf{variable} coefficients otherwise.
-              \item A linear PDE is \textbf{homogeneous} if all terms depend on the unknown function, and \textbf{nonhomogeneous} otherwise.
+              \item A linear PDE has \textbf{constant} coefficients if
+                    the coefficients of the linear terms do not depend
+                    on the independent variables, and has
+                    \textbf{variable} coefficients otherwise.
+              \item A linear PDE is \textbf{homogeneous} if all terms
+                    depend on the unknown function, and
+                    \textbf{nonhomogeneous} otherwise.
           \end{itemize}
 \end{itemize}
 \subsection{Initial Boundary Value Problems}
-As with ODEs, we can find the general solution to a PDE and then use initial/boundary conditions to solve for arbitrary constants.
-The number of conditions for each independent variable depends on the order of that variable in the PDE\@. Problems with initial and boundary
-conditions are called \textbf{initial boundary value problems} and are often referred to as \textbf{IBVPs}.
+As with ODEs, we can find the general solution to a PDE and then use
+initial/boundary conditions to solve for arbitrary constants. The
+number of conditions for each independent variable depends on the order
+of that variable in the PDE\@. Problems with initial and boundary
+conditions are called \textbf{initial boundary value problems} and are
+often referred to as \textbf{IBVPs}.
 \subsubsection{Boundary Condition Classification}
-Boundary conditions may depend on \(u\), the gradient \(\pdv{u}{x}\), or both, depending
-on the situation being modelled. The following is a list of the different types of boundary conditions:
+Boundary conditions may depend on \(u\), the gradient \(\pdv{u}{x}\),
+or both, depending on the situation being modelled. The following is a
+list of the different types of boundary conditions:
 \begin{description}
     \item[Dirichlet] \(u\left( a,\: t \right) = C\)
     \item[Neumann] \(\pdv{u}{x} \left( a,\: t \right) = C\)
-    \item[Robin] \(A u\left( a,\: t \right) + B \pdv{u}{x} \left( a,\: t \right) = C\)
+    \item[Robin] \(A u\left( a,\: t \right) + B \pdv{u}{x} \left( a,\:
+          t \right) = C\)
 \end{description}
 where in each classification, the boundary condition is homogeneous iff \(C = 0\).
 \subsection{Linear Operators and Superposition}
-By linearity, we can write a PDE in terms of linear operators. For example, we can write the PDE
+By linearity, we can write a PDE in terms of linear operators. For
+example, we can write the PDE
 \begin{equation*}
     \pdv[order=2]{u}{x} = \pdv{u}{x} + \pdv{u}{t}
 \end{equation*}
@@ -282,9 +312,12 @@ Similarly, we can describe initial/boundary conditions as linear or homogeneous.
     where \(c_n\) are constants.
 \end{theorem}
 \subsection{Heat Equation}
-Consider the temperature \(u\left( x,\: t \right)\) of a 1d metal rod of length \(L\) with an initial temperature \(u\left( x,\: 0 \right) = f\left( x \right)\)
-and boundary conditions \(u\left( 0,\: t \right) = T_1\) and \(u\left( L,\: t \right) = T_2\).
-If we consider a small section \(\interval{x_1}{x_2} \in \interval{0}{L}\), then the rate of change of heat \(H\left( x,\: t \right)\) in this section is given by
+Consider the temperature \(u\left( x,\: t \right)\) of a 1d metal rod
+of length \(L\) with an initial temperature \(u\left( x,\: 0 \right) =
+f\left( x \right)\) and boundary conditions \(u\left( 0,\: t \right) =
+T_1\) and \(u\left( L,\: t \right) = T_2\). If we consider a small
+section \(\interval{x_1}{x_2} \in \interval{0}{L}\), then the rate of
+change of heat \(H\left( x,\: t \right)\) in this section is given by
 \begin{align*}
     \text{Rate of change of heat energy} & = \text{Flow in} - \text{Flow out}                    \\
     \int_{x_1}^{x_2} \pdv{H}{t} \odif{x} & = Q\left( x_1,\: t \right) - Q\left( x_2,\: t \right)
@@ -293,12 +326,15 @@ where \(Q\left( x,\: t \right)\) is the heat flux at time \(t\).
 By making the following assumptions, we can formulate a relationship for the temperature in the rod at position \(x\) at time \(t\).
 \begin{enumerate}
     \item No energy is lost in the rod.
-    \item The change in heat energy is proportional to the change in temperature (i.e., no phase changes are present) so that the specific heat equation applies.
+    \item The change in heat energy is proportional to the change in
+          temperature (i.e., no phase changes are present) so that the
+          specific heat equation applies.
           \begin{equation*}
               \adif{H} = \rho c \adif{u} \iff \pdv{H}{t} = \rho c \pdv{u}{t}
           \end{equation*}
           where \(\rho\) is the density of the rod and \(c\) is the specific heat of the rod.
-    \item The material of the rod is homogeneous, and Fourier's law of conduction applies.
+    \item The material of the rod is homogeneous, and Fourier's law of
+          conduction applies.
           \begin{equation*}
               \symbfit{Q} = -\kappa \nabla \symbfit{u} \implies Q = -\kappa \pdv{u}{x}
           \end{equation*}
@@ -324,13 +360,16 @@ More generally, we can write the PDE aas
 for multiple spatial dimensions. This PDE is called the heat equation.
 The heat equation is first order w.r.t.\ time and second order w.r.t.\ space.
 \subsection{Wave Equation}
-Consider an elastic string that is stretched tightly with its two ends fixed at \(x = 0\) and \(x = L\) where
-the vertical displacement of the string is given by \(u\left( x,\: t \right)\),
-and the initial displacement is arbitrary: \(u\left( x,\: 0 \right) = f\left( x \right)\).
+Consider an elastic string that is stretched tightly with its two ends
+fixed at \(x = 0\) and \(x = L\) where the vertical displacement of the
+string is given by \(u\left( x,\: t \right)\), and the initial
+displacement is arbitrary: \(u\left( x,\: 0 \right) = f\left( x
+\right)\).
 
-Let \(\theta\left( x,\: t \right)\) be the angle of the string from the horizontal with tension \(T\left( x,\: t \right)\) (magnitude).
-We can then apply the law of conservation.
-In the horizontal direction, assume equilibrium:
+Let \(\theta\left( x,\: t \right)\) be the angle of the string from the
+horizontal with tension \(T\left( x,\: t \right)\) (magnitude). We can
+then apply the law of conservation. In the horizontal direction, assume
+equilibrium:
 \begin{equation*}
     T\left( x_1,\: t \right) \cos{\left( \theta\left( x_1,\: t \right) \right)} = T\left( x_2,\: t \right) \cos{\left( \theta\left( x_2,\: t \right) \right)}
 \end{equation*}
@@ -363,7 +402,8 @@ As this PDE is second order w.r.t.\ time, the second initial condition is
 \end{equation*}
 where \(g\left( x \right)\) is an initial velocity applied to the string.
 \subsection{Laplace's Equation}
-By considering higher spatial dimensions, we can model the temperature of a plate \(u\left( x,\: y,\: t \right)\) with:
+By considering higher spatial dimensions, we can model the temperature
+of a plate \(u\left( x,\: y,\: t \right)\) with:
 \begin{equation*}
     \pdv{u}{t} = k \left( \pdv[order=2]{u}{x} + \pdv[order=2]{u}{y} \right)
 \end{equation*}
@@ -381,7 +421,9 @@ which is known as Laplace's equation. Commonly, this equation is written using t
 \end{equation*}
 When this equation is nonhomogeneous, the PDE is known as Poisson's equation.
 \subsection{Classification of Linear Second Order PDEs}
-All second order, linear partial differential equations in two dimensions (either space and time or space and space) may be written in the following way:
+All second order, linear partial differential equations in two
+dimensions (either space and time or space and space) may be written in
+the following way:
 \begin{equation*}
     A\left( x,\: y \right) \pdv[order=2]{u}{x} + B\left( x,\: y \right) \pdv{u}{x,y} + C\left( x,\: y \right) \pdv[order=2]{u}{y} + D\left( x,\: y \right) \pdv{u}{x} + E\left( x,\: y \right) \pdv{u}{y} + F\left( x,\: y \right) u = G\left( x,\: y \right).
 \end{equation*}
@@ -403,15 +445,19 @@ To solve an IBVP consider the following:
           \begin{equation*}
               f_1\left( x,\: X,\: X',\: \dots \right) = f_2\left( t,\: T,\: T',\: \dots \right).
           \end{equation*}
-    \item As each term depends on a different variable,
-          each \(f_i\) must be a scalar \(\alpha_n\).
+    \item As each term depends on a different variable, each \(f_i\)
+          must be a scalar \(\alpha_n\).
           \begin{align*}
               f_1\left( x,\: X,\: X',\: \dots \right) & = \alpha_n  \\
               f_2\left( t,\: T,\: T',\: \dots \right) & = \alpha_n.
           \end{align*}
-    \item Solve the ODEs with boundary conditions while selecting appropriate values of \(\alpha_n\) (i.e., negative, zero, positive) that produce non-trivial solutions.
-    \item Solve the remaining ODEs using \(\alpha_n\) from the previous step.
-    \item Use the principle of superposition to construct a general solution:
+    \item Solve the ODEs with boundary conditions while selecting
+          appropriate values of \(\alpha_n\) (i.e., negative, zero,
+          positive) that produce non-trivial solutions.
+    \item Solve the remaining ODEs using \(\alpha_n\) from the previous
+          step.
+    \item Use the principle of superposition to construct a general
+          solution:
           \begin{equation*}
               u\left( x,\: t \right) = \sum_{n = 1}^\infty u_n\left( x,\: t \right).
           \end{equation*}
@@ -469,10 +515,11 @@ This results in the following two ODEs
         \begin{vmatrix*}
             1 & 1 \\
             e^{\sqrt{\alpha_n} L} & e^{-\sqrt{\alpha_n} L}
-        \end{vmatrix*} & = 0        \\
-        e^{-\sqrt{\alpha_n} L} - e^{\sqrt{\alpha_n} L}                 & = 0 \\
-        -2\sinh{\left( \sqrt{\alpha_n} L \right)}                      & = 0 \\
-        \alpha_n                                                       & = 0
+        \end{vmatrix*}
+                                                       & = 0 \\
+        e^{-\sqrt{\alpha_n} L} - e^{\sqrt{\alpha_n} L} & = 0 \\
+        -2\sinh{\left( \sqrt{\alpha_n} L \right)}      & = 0 \\
+        \alpha_n                                       & = 0
     \end{align*}
     but as \(\alpha_n > 0\), no solutions exist.
 \end{proofcase}
@@ -548,8 +595,9 @@ For large \(t\)
     u\left( x,\: t \right) \approx B_1 \sin{\left( \frac{\pi}{L} x \right)}.
 \end{equation*}
 \subsection{Separation of Variables: Wave Equation}
-Assume that the initial velocity is 0 and that the ends of the string can move freely in the direction of the string,
-so that the conditions are given by
+Assume that the initial velocity is 0 and that the ends of the string
+can move freely in the direction of the string, so that the conditions
+are given by
 \begin{equation*}
     u\left( x,\: 0 \right) = f\left( x \right), \quad \quad \pdv{u}{t} \left( x,\: 0 \right) = 0, \quad \quad \pdv{u}{x} \left( 0,\: t \right) = \pdv{u}{x} \left( L,\: t \right) = 0.
 \end{equation*}
@@ -614,10 +662,11 @@ This results in the following two ODEs
         \begin{vmatrix*}
             1 & -1 \\
             e^{\sqrt{\alpha_n} L} & -e^{-\sqrt{\alpha_n} L}
-        \end{vmatrix*} & = 0        \\
-        -e^{-\sqrt{\alpha_n} L} + e^{\sqrt{\alpha_n} L}         & = 0 \\
-        2\sinh{\left( \sqrt{\alpha_n} L \right)}                & = 0 \\
-        \alpha_n                                                & = 0
+        \end{vmatrix*}
+                                                        & = 0 \\
+        -e^{-\sqrt{\alpha_n} L} + e^{\sqrt{\alpha_n} L} & = 0 \\
+        2\sinh{\left( \sqrt{\alpha_n} L \right)}        & = 0 \\
+        \alpha_n                                        & = 0
     \end{align*}
     but as \(\alpha_n > 0\), no solutions exist.
 \end{proofcase}
@@ -669,7 +718,8 @@ This results in the following two ODEs
     \end{equation*}
 \end{proofcase}
 \subsubsection{Time Dimension}
-As we found two cases for \(\alpha_n\), we must do the same for \(T_n\).
+As we found two cases for \(\alpha_n\), we must do the same for
+\(T_n\).
 \begin{proofcase}{1. \(\alpha_n < 0\)}\let\qed\relax
     \begin{align*}
         m^2 - \alpha_n c^2 & = 0                        \\
@@ -712,7 +762,8 @@ Applying the initial conditions gives
 \end{align*}
 so that the coefficients \(A_n\) are given by the Fourier cosine coefficients of the initial condition \(f\left( x \right)\).
 
-Applying the second initial condition requires the first derivative w.r.t.\ \(x\):
+Applying the second initial condition requires the first derivative
+w.r.t.\ \(x\):
 \begin{equation*}
     \pdv{u\left( x,\: t \right)}{x} = B_0 + \sum_{n = 1}^\infty \frac{n \pi}{L} c \cos{\left( \frac{n \pi}{L} x \right)} \left[ B_n \cos{\left( \frac{n \pi}{L} c t \right)} - A_n \sin{\left( \frac{n \pi}{L} c t \right)} \right]
 \end{equation*}
@@ -750,10 +801,11 @@ This results in the following two ODEs
     Y'' + \alpha_n Y & = 0
 \end{align*}
 \subsubsection{Problem for \(X\)}
-Let us first consider the problem for \(X\) as a boundary condition for \(Y\) is nonhomogeneous.
+Let us first consider the problem for \(X\) as a boundary condition for
+\(Y\) is nonhomogeneous.
 
-From the heat equation, we know that the only nontrivial solutions to this ODE
-occur when
+From the heat equation, we know that the only nontrivial solutions to
+this ODE occur when
 \begin{equation*}
     \alpha_n = - n^2 \pi^2 < 0, \quad \quad X\left( x \right) = X_n\left( x \right) = c \sin{\left( n \pi x \right)}, \quad \quad n = 1,\: 2,\: 3,\: \dots
 \end{equation*}
@@ -786,14 +838,15 @@ with
     B_n \sinh{\left( n \pi \right)} = 2 \int_0^1 x^2 \sin{\left( n \pi x \right)} \odif{x}.
 \end{equation*}
 \section{Sturm-Liouville Theory}
-Sturm-Liouville theory is used to solve real second-order linear ODEs of the form:
+Sturm-Liouville theory is used to solve real second-order linear ODEs
+of the form:
 \begin{equation*}
     \odv{}{x} \left[ p\left( x \right) \odv{y}{x} \right] + q\left( x \right) y + \lambda w\left( x \right) y = 0,
 \end{equation*}
 with the boundary conditions
 \begin{align*}
     -l_1 y'\left( a \right) + h_1 y\left( a \right) & = 0 \\
-    l_2 y'\left( b \right) + h_2 y\left( b \right) & = 0
+    l_2 y'\left( b \right) + h_2 y\left( b \right)  & = 0
 \end{align*}
 where both boundary conditions must be non-trivial (\(l\) or \(h\) is non-zero). A Sturm-Liouville problem is
 \textbf{regular} when \(p\left( x \right), w\left( x \right) > 0\), and \(p\left( x \right), p'\left( x \right), q\left( x \right), w\left( x \right)\) are continuous
@@ -808,7 +861,8 @@ can be converted into SL form by multiplying the ODE by the integrating factor
     \mu = \frac{1}{a_2} \exp{\left( \int \frac{a_1}{a_2} \odif{x} \right)}.
 \end{equation*}
 \subsection{Weighted Inner Product}
-The function \(w\left( x \right) > 0\) is known as the \textbf{weight function} with which we can define the inner product:
+The function \(w\left( x \right) > 0\) is known as the \textbf{weight
+function} with which we can define the inner product:
 \begin{equation*}
     \abracket*{f,\: g}_{w} = \int_a^b f\left( x \right) g\left( x \right) w\left( x \right) \odif{x}.
 \end{equation*}
@@ -823,28 +877,35 @@ the Sturm-Liouville system:
     L u = \lambda u.
 \end{equation*}
 \subsection{Self-Adjointness}
-Here we recognise that \(L\) is a \textbf{self-adjoint} operator, such that:
+Here we recognise that \(L\) is a \textbf{self-adjoint} operator, such
+that:
 \begin{equation*}
     \abracket*{Lf,\: g}_{w} = \abracket*{f,\: Lg}_{w}.
 \end{equation*}
 \subsection{Orthogonality}
-It then follows that all solutions to this ODE produce an infinite number of real \textbf{eigenvalues} \(\lambda_i\),
-where \(\lambda_n \to \infty\) as \(n \to \infty\), where the corresponding \textbf{eigenfunctions} \(u_i\) of \(L\)
-are \textbf{orthogonal} with respect to the weighted inner product.
+It then follows that all solutions to this ODE produce an infinite
+number of real \textbf{eigenvalues} \(\lambda_i\), where \(\lambda_n
+\to \infty\) as \(n \to \infty\), where the corresponding
+\textbf{eigenfunctions} \(u_i\) of \(L\) are \textbf{orthogonal} with
+respect to the weighted inner product.
 
-Taking the weighted inner product between normalised eigenfunctions shows that
+Taking the weighted inner product between normalised eigenfunctions
+shows that
 \begin{equation*}
     \abracket*{y_n,\: y_m} = \int_a^b y_n\left( x \right) y_m\left( x \right) w\left( x \right) \odif{x} = \delta_{mn}
 \end{equation*}
 where \(\delta_{mn}\) is the Kronecker delta.
 \subsection{Sign of Eigenvalues}
-A \textbf{proper} Sturm-Liouville system is a system in which \(q\left( x \right) \leqslant 0\) on \(\interval{a}{b}\),
-with \(l_1h_1 \geqslant 0\) and \(l_2h_2 \geqslant 0\).
-All eigenvalues of a proper Sturm-Liouville system are non-negative.
+A \textbf{proper} Sturm-Liouville system is a system in which \(q\left(
+x \right) \leqslant 0\) on \(\interval{a}{b}\), with \(l_1h_1 \geqslant
+0\) and \(l_2h_2 \geqslant 0\). All eigenvalues of a proper
+Sturm-Liouville system are non-negative.
 \subsection{Singular and Periodic Sturm-Liouville Systems}
 \begin{itemize}
-    \item When \(p\left( a \right) = 0\), and the BC at \(x = a\) is replaced by the condition that \(y\) remain bounded; the
-          system is \textbf{singular}\footnote{The same applies with the boundary condition at \(x = b\)}.
+    \item When \(p\left( a \right) = 0\), and the BC at \(x = a\) is
+          replaced by the condition that \(y\) remain bounded; the
+          system is \textbf{singular}\footnote{The same applies with
+          the boundary condition at \(x = b\)}.
     \item If instead of the BCs we have:
           \begin{equation*}
               p\left( a \right) = p\left( b \right) \quad \text{and} \quad p'\left( a \right) = p'\left( b \right)
@@ -852,10 +913,11 @@ All eigenvalues of a proper Sturm-Liouville system are non-negative.
           then we have a \textbf{periodic} system, where \(y\) must also be periodic.
 \end{itemize}
 \subsection{Eigenfunction Expansions}
-If we treat the set of eigenfunctions of a Sturm-Liouville system as
-a \textbf{basis}, we can write a given function \(f\) as a linear combination
-of eigenfunctions. Given an orthogonal basis \(\left\{ y_n\left( x \right) : n \in \Z^{+} \right\}\),
-the eigenfunction expansion of \(f\) is given by
+If we treat the set of eigenfunctions of a Sturm-Liouville system as a
+\textbf{basis}, we can write a given function \(f\) as a linear
+combination of eigenfunctions. Given an orthogonal basis \(\left\{
+y_n\left( x \right) : n \in \Z^{+} \right\}\), the eigenfunction
+expansion of \(f\) is given by
 \begin{equation*}
     f_E\left( x \right) = \sum_{n = 1}^\infty c_n y_n\left( x \right)
 \end{equation*}
@@ -878,15 +940,17 @@ a particular eigenfunction \(y_m\):
 This result generalises the Fourier series expansion introduced in Section 1, as our basis
 is no longer restricted to trigonometric functions.
 \subsubsection{Convergence}
-As with Fourier series, \(f_E\) does not necessarily converge to \(f\). For instance,
-if \(f\) is piecewise smooth,
+As with Fourier series, \(f_E\) does not necessarily converge to \(f\).
+For instance, if \(f\) is piecewise smooth,
 \begin{equation*}
     f_E\left( x \right) = \lim_{\epsilon \to 0^+} \frac{f\left( x + \epsilon \right) + f\left( x - \epsilon \right)}{2}
 \end{equation*}
 for \(a < x < b\).
 \section{Polar Coordinates}
-When considering problems posed on circular regions, we can apply coordinate transformation to solve problems using polar coordinates.
-Recall that we can write \(x\) and \(y\) in terms of \(r\) and \(\theta\):
+When considering problems posed on circular regions, we can apply
+coordinate transformation to solve problems using polar coordinates.
+Recall that we can write \(x\) and \(y\) in terms of \(r\) and
+\(\theta\):
 \begin{equation*}
     x = r \cos{\left( \theta \right)}, \quad y = r \sin{\left( \theta \right)} \quad \iff \quad r = \sqrt{x^2 + y^2}, \quad \theta = \arctan{\left( \frac{y}{x} \right)}.
 \end{equation*}
@@ -912,7 +976,8 @@ By using the multivariable chain rule, we can express the Laplacian in terms of 
     \nabla^2 u = \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta}.
 \end{equation*}
 \subsection{Laplace's Equation in Polar Coordinates}
-Consider the following example of Laplace's equation on a disk of radius \(a\):
+Consider the following example of Laplace's equation on a disk of
+radius \(a\):
 \begin{equation*}
     \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta} = 0, \quad\quad 0 \leq r < a, -\pi < \theta \leq \pi,
 \end{equation*}
@@ -934,14 +999,13 @@ so that
 \end{align*}
 therefore
 \begin{align*}
-    r^2 R'' + r R' + \alpha R & = 0 \\
-    \Theta'' - \alpha \Theta & = 0.
+    r^2 R'' + r R' + \alpha R & = 0  \\
+    \Theta'' - \alpha \Theta  & = 0.
 \end{align*}
 \subsubsection{Periodicity}
-To identify the Sturm-Liouville problem, we require a homogeneous equation
-with homogeneous boundary conditions.
-As \(u\) is defined on a circular disk, it must satisfy the following condition of
-periodicity:
+To identify the Sturm-Liouville problem, we require a homogeneous
+equation with homogeneous boundary conditions. As \(u\) is defined on a
+circular disk, it must satisfy the following condition of periodicity:
 \begin{equation*}
     u\left( r,\: \theta \right) = u\left( r,\: \theta + 2\pi \right).
 \end{equation*}
@@ -970,9 +1034,10 @@ However, when \(n = 0\),
     R_0 = c_1 \ln{\left( r \right)} + c_2.
 \end{equation*}
 \subsubsection{Boundedness}
-As \(u\) is defined on a circular disk, it must be bounded at \(r = 0\).
-Therefore, \(R_n\) must be bounded at \(r = 0\), which implies that in the first solution,
-\(c_2 = 0\), and in the second solution, \(c_1 = 0\). This results in
+As \(u\) is defined on a circular disk, it must be bounded at \(r =
+0\). Therefore, \(R_n\) must be bounded at \(r = 0\), which implies
+that in the first solution, \(c_2 = 0\), and in the second solution,
+\(c_1 = 0\). This results in
 \begin{equation*}
     R_0 = c_2, \quad\quad R_n = c_1 r^n.
 \end{equation*}
@@ -981,7 +1046,8 @@ By applying superposition,
     u\left( r,\: \theta \right) = A_0 + \sum_{n = 1}^\infty \left[ A_n r_n \cos{\left( n \theta \right)} + B_n r_n \sin{\left( n \theta \right)} \right].
 \end{equation*}
 \subsubsection{Boundary Conditions}
-Assuming \(u\left( a,\: \theta \right) = f\left( \theta \right)\), we have
+Assuming \(u\left( a,\: \theta \right) = f\left( \theta \right)\), we
+have
 \begin{equation*}
     u\left( a,\: \theta \right) = f\left( \theta \right) = A_0 + \sum_{n = 1}^\infty \left[ A_n a^n \cos{\left( n \theta \right)} + B_n a^n \sin{\left( n \theta \right)} \right]
 \end{equation*}
@@ -996,16 +1062,20 @@ possibly with a boundary condition of the form:
     u\left( c,\: t \right) = a\left( t \right).
 \end{equation*}
 \subsection{Steady-State and Transient Solutions}
-For \textbf{time-independent} non-homogeneities (i.e., when \(F = F\left( x \right)\)), we can separate the solution of a nonhomogeneous PDE into a \textbf{steady-state solution}, which is found by setting the time
-derivative to zero, and a \textbf{transient solution}, which will satisfy the homogeneous PDE and boundary conditions.
-The steady-state solution takes the form,
+For \textbf{time-independent} non-homogeneities (i.e., when \(F =
+F\left( x \right)\)), we can separate the solution of a nonhomogeneous
+PDE into a \textbf{steady-state solution}, which is found by setting
+the time derivative to zero, and a \textbf{transient solution}, which
+will satisfy the homogeneous PDE and boundary conditions. The
+steady-state solution takes the form,
 \begin{equation*}
     u\left( x,\: t \right) = U\left( x \right),
 \end{equation*}
 where \(U\left( x \right)\) satisfies the PDE and boundary conditions, but not the initial condition for \(u\left( x,\: t \right)\).
 
-To find the evolution of a system from an initial condition \(u\left( x,\: 0 \right) = f\left( x \right)\),
-we need to find a transient solution \(v\left( x,\: t \right)\):
+To find the evolution of a system from an initial condition \(u\left(
+x,\: 0 \right) = f\left( x \right)\), we need to find a transient
+solution \(v\left( x,\: t \right)\):
 \begin{equation*}
     v\left( x,\: t \right) = u\left( x,\: t \right) - U\left( x \right).
 \end{equation*}
@@ -1016,28 +1086,171 @@ This solution satisfies the general solution
 After substitution, \(u\left( x,\: t \right)\) will be transformed into an homogeneous PDE that
 can be solved using the methods described in the previous sections.
 \subsection{Eigenfunction Expansion}
-For a general nonhomogeneous term \(F = F\left( x,\: t \right)\), we assume that the solution will take
-the form of an eigenfunction expansion in one variable, where the eigenfunctions are those that come from the homogeneous
-version of the problem, and the unknown coefficients are functions of the other variable.
+For a general nonhomogeneous term \(F = F\left( x,\: t \right)\), we
+assume that the solution will take the form of an eigenfunction
+expansion in one variable, where the eigenfunctions are those that come
+from the homogeneous version of the problem, and the unknown
+coefficients are functions of the other variable.
 
-Here the boundary conditions must be homogeneous, and therefore, the PDE must be
-transformed (i.e., via a subtraction), to cancel any nonhomogeneous terms.
-This can be done by choosing an appropriate \(v\left( x,\: t \right)\)
-which yields a new PDE.
+Here the boundary conditions must be homogeneous, and therefore, the
+PDE must be transformed (i.e., via a subtraction), to cancel any
+nonhomogeneous terms. This can be done by choosing an appropriate
+\(v\left( x,\: t \right)\) which yields a new PDE.
 \section{The Fourier Transform}
-The Fourier series approximation is defined on the finite domain \(\interval{-L}{L}\), where
-the approximation \(f_F\) is periodically extended outside of this domain. The Fourier transform
-considers the limiting process \(L \to \infty\) to obtain a transform defined on the infinite domain \(\ointerval{-\infty}{\infty}\).
+The Fourier series approximation is defined on the finite domain
+\(\interval{-L}{L}\), where the approximation \(f_F\) is periodically
+extended outside of this domain. The Fourier transform considers the
+limiting process \(L \to \infty\) to obtain a transform defined on the
+infinite domain \(\ointerval{-\infty}{\infty}\).
 
-Let \(\omega_n = \frac{n \pi}{L}\) for \(n \in \Z\) so that \(\fdif{\omega} = \omega_{n + 1} - \omega_n = \frac{\pi}{L}\).
-Then as \(L \to \infty\), \(\fdif{\omega} \to 0\). If we multiply the Fourier series approximation of \(f\left( x \right)\) by \(\fdif{\omega}\), then
-
+Let \(\omega_n = \frac{n \pi}{L}\) for \(n \in \Z\) so that
+\(\fdif{\omega} = \omega_{n + 1} - \omega_n = \frac{\pi}{L}\). Then
+\begin{multline*}
+    f_F\left( x \right) = \left[ \frac{1}{2\pi} \int_{-L}^L f\left( x \right) \odif{x} \right] \fdif{\omega}
+    + \frac{1}{\pi} \sum_{n = 1}^\infty
+    \left( \left[ \int_{-L}^L f\left( z \right) \cos{\left( \omega_n z \right)} \odif{z} \right] \cos{\left( \omega_n x \right)} \right. \\
+    + \left. \left[ \int_{-L}^L f\left( z \right) \sin{\left( \omega_n z \right)} \odif{z} \right] \sin{\left( \omega_n x \right)} \right) \fdif{\omega}.
+\end{multline*}
+Taking the limit \(L \to \infty\), results in \(\fdif{\omega} \to 0\), so that
 \begin{equation*}
-    \lim_{L \to \infty} f_F\left( x \right) = \lim_{}\frac{1}{2L} \int_{-L}^L f\left( x \right) \odif{x} + \sum_{n = 1}^\infty \frac{1}{L} \int_{-L}^L f\left( x \right) \cos{\left( \frac{n \pi x}{L} \right)} \odif{x} \cos{\left( \frac{n \pi x}{L} \right)} + \sum_{n = 1}^\infty \frac{1}{L} \int_{-L}^L f\left( x \right) \sin{\left( \frac{n \pi x}{L} \right)} \odif{x} \sin{\left( \frac{n \pi x}{L} \right)}
+    f_F\left( x \right) = \frac{1}{\pi} \int_0^\infty \left[ \int_{-\infty}^\infty f\left( z \right) \cos{\left( \omega z \right)} \odif{z} \right] \cos{\left( \omega x \right)} \odif{\omega} + \frac{1}{\pi} \int_0^\infty \left[ \int_{-\infty}^\infty f\left( z \right) \sin{\left( \omega z \right)} \odif{z} \right] \sin{\left( \omega x \right)} \odif{\omega}.
 \end{equation*}
-The Fourier series approximation of \(f\left( x \right)\) is given by
-
-% \section{The Laplace Transform}
-% \section{Complex Analysis}
-% \section{Inverse Transforms}
+As the two integrands are even and odd respectively, we can use Euler's
+identity to simplify the expression. First, let us define
+\(g\left( \omega \right) = \int_{-\infty}^\infty f\left( z \right) \cos{\left( \omega z \right)} \odif{z}\)
+and \(h\left( \omega \right) = \int_{-\infty}^\infty f\left( z \right) \sin{\left( \omega z \right)} \odif{z}\).
+Then,
+\begin{align*}
+    f_F\left( x \right) & = \frac{1}{\pi} \int_0^\infty g\left( \omega \right) \cos{\left( \omega x \right)} \odif{\omega} + \frac{1}{\pi} \int_0^\infty h\left( \omega \right) \sin{\left( \omega x \right)} \odif{\omega}                                                                                                                    \\
+                        & = \frac{1}{2 \pi} \int_0^\infty g\left( \omega \right) \left( e^{i \omega x} + e^{-i \omega x} \right) \odif{\omega} + \frac{1}{2i \pi} \int_0^\infty h\left( \omega \right) \left( e^{i \omega x} - e^{-i \omega x} \right) \odif{\omega}                                                                           \\
+                        & = \frac{1}{2 \pi} \left[ \int_0^\infty g\left( \omega \right) e^{i \omega x} \odif{\omega} + \int_0^\infty g\left( \omega \right) e^{-i \omega x} \odif{\omega} - i \int_0^\infty h\left( \omega \right) e^{i \omega x} \odif{\omega} + i \int_0^\infty h\left( \omega \right) e^{-i \omega x} \odif{\omega} \right]
+\end{align*}
+Using the substitution \(u = -\omega\) for the second and fourth
+integrals, the RHS becomes
+\begin{equation*}
+    \frac{1}{2 \pi} \left[ \int_0^\infty g\left( \omega \right) e^{i \omega x} \odif{\omega} - \int_0^{-\infty} g\left( -u \right) e^{i u x} \odif{u} - i \int_0^\infty h\left( \omega \right) e^{i \omega x} \odif{\omega} - i \int_0^{-\infty} h\left( -u \right) e^{i u x} \odif{u} \right].
+\end{equation*}
+Reverting this variable back to \(\omega\) allows for the following
+simplification:
+\begin{align*}
+    f_F\left( x \right) & = \frac{1}{2 \pi} \left[ \int_0^\infty g\left( \omega \right) e^{i \omega x} \odif{\omega} + \int_{-\infty}^0 g\left( \omega \right) e^{i \omega x} \odif{\omega} - i \int_0^\infty h\left( \omega \right) e^{i \omega x} \odif{\omega} - i \int_{-\infty}^0 h\left( \omega \right) e^{i \omega x} \odif{\omega} \right] \\
+                        & = \frac{1}{2 \pi} \left[ \int_{-\infty}^\infty g\left( \omega \right) e^{i \omega x} \odif{\omega} - i \int_{-\infty}^\infty h\left( \omega \right) e^{i \omega x} \odif{\omega} \right]                                                                                                                                 \\
+                        & = \frac{1}{2 \pi} \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( z \right) \left( \cos{\left( \omega z \right)} - i \sin{\left( \omega z \right)} \right) \odif{z} \right] e^{i \omega x} \odif{\omega}                                                                                                      \\
+                        & = \frac{1}{2 \pi} \int_{-\infty}^\infty \left[ \int_{-\infty}^\infty f\left( z \right) e^{-i \omega z} \odif{z} \right] e^{i \omega x} \odif{\omega}.
+\end{align*}
+\begin{definition}[Fourier Transform]
+    The Fourier transform of a function \(f\left( x \right)\) is denoted
+    \(\hat{f}\left( \omega \right)\) and is defined:
+    \begin{equation*}
+        \hat{f}\left( \omega \right) = \mathscr{F}\left\{ f\left( x \right) \right\} = \int_{-\infty}^\infty f\left( x \right) e^{-i \omega x} \odif{x}.
+    \end{equation*}
+\end{definition}
+\begin{definition}[Inverse Fourier Transform]
+    The inverse Fourier transform of a function
+    \(\hat{f}\left( \omega \right)\) is denoted
+    \(f_F\left( x \right)\) and is defined:
+    \begin{equation*}
+        f_F\left( x \right) = \mathscr{F}^{-1}\left\{ f\left( x \right) \right\} = \frac{1}{2 \pi} \int_{-\infty}^\infty \hat{f}\left( \omega \right) e^{i \omega x} \odif{\omega}.
+    \end{equation*}
+\end{definition}
+\subsection{Solving PDEs}
+PDEs that are defined on infinite domains can utilise the Fourier
+transform to transform the problem to an ODE in \(\omega\). In such
+problems, it is required the solution be bounded as the spatial
+variable approaches \(\pm \infty\).
+\subsection{Fourier Transform Properties}
+\begin{definition}[Convolution]
+    The convolution of two functions \(f\left( x \right)\) and \(g\left( x \right)\) is defined:
+    \begin{equation*}
+        \left( f \ast g \right)\left( x \right) = \int_{-\infty}^\infty f\left( x - z \right) g\left( z \right) \odif{z}.
+    \end{equation*}
+\end{definition}
+\begin{theorem}[Convolution Theorem for Fourier Transforms]
+    \begin{equation*}
+        \mathscr{F}\left\{ \left( f \ast g \right)\left( x \right) \right\} = \hat{f}\left( \omega \right) \hat{g}\left( \omega \right).
+    \end{equation*}
+    \begin{equation*}
+        \frac{1}{2\pi} \left( \hat{f} \ast \hat{g} \right)\left( \omega \right) = \mathscr{F}\left\{ f\left( x \right) g\left( x \right) \right\}.
+    \end{equation*}
+\end{theorem}
+\section{The Laplace Transform}
+The Laplace transform is a generalisation of the Fourier transform that
+is defined on the semi-infinite domain \(\ointerval{0}{\infty}\). The
+Laplace transform is defined as follows:
+\begin{definition}[Laplace Transform]
+    The Laplace transform of a function \(f\left( t \right)\) is denoted
+    \(\mathscr{L}\left\{ f\left( t \right) \right\}\) and is defined:
+    \begin{equation*}
+        F\left( s \right) = \mathscr{L}\left\{ f\left( t \right) \right\} = \int_0^\infty f\left( t \right) e^{-st} \odif{t}.
+    \end{equation*}
+    where \(s\) is a complex variable. Note that for this integral to
+    exist, \(f\) must not grow faster than \(e^{st}\) as \(t \to \infty\).
+\end{definition}
+\subsection{Solving PDEs}
+PDEs that are defined on semi-infinite domains can utilise the Laplace
+transform to transform the problem to an ODE of the remaining variable.
+Once solved, the inverse Laplace transform can be used to find the
+solution in the original domain.
+\subsection{Laplace Transform Properties}
+\begin{theorem}[Convolution Theorem for Laplace Transforms]
+    \begin{equation*}
+        \mathscr{L}\left\{ \left( f \ast g \right)\left( t \right) \right\} = F\left( s \right) F\left( s \right).
+    \end{equation*}
+    \begin{equation*}
+        f\left( t \right) g\left( t \right) = \mathscr{L}\left\{ F\left( s \right) \ast F\left( s \right) \right\}.
+    \end{equation*}
+\end{theorem}
+\section{Complex Analysis}
+\subsection{Complex-valued Functions}
+A complex-valued function \(f\) maps the complex values \(z\) in a set
+\(S\) to a unique set of complex values \(w\) in a set \(T\). The
+function \(f\) is defined:
+\begin{equation*}
+    w = f\left( z \right).
+\end{equation*}
+Separating the real and imaginary components of \(z\) and \(w\) as
+\(z = x + i y\) and \(w = u + i v\), shows that \(u\) and \(v\) are
+functions of \(x\) and \(y\):
+\begin{equation*}
+    w = f\left( z \right) = u\left( x,\: y \right) + i v\left( x,\: y \right).
+\end{equation*}
+Therefore \(f\) is a mapping of values from the
+\(\left( x,\: y \right)\) plane to the \(\left( u,\: v \right)\) plane.
+\subsection{Complex Exponential}
+The complex exponential is defined
+\begin{equation*}
+    w = e^z = \exp{\left( z \right)} = e^x \left( \cos{\left( y \right)} + i \sin{\left( y \right)} \right).
+\end{equation*}
+Using this form, it can be shown that the complex exponential maintains
+several properties of the real exponential:
+\begin{enumerate}
+    \item \(e^{z_1 + z_2} = e^{z_1} e^{z_2}\)
+    \item \(e^{n z} = \left( e^z \right)^n\) for \(n \in \Z\)
+\end{enumerate}
+\subsubsection{Trigonometric and Hyperbolic Functions}
+Using Euler's formula, the following functions may be expressed using
+complex exponentials.
+\begin{align*}
+    \cos{\left( z \right)} = \frac{e^{i z} + e^{-i z}}{2} \qquad \sin{\left( z \right)} = \frac{e^{i z} - e^{-i z}}{2i} \\
+    \cosh{\left( z \right)} = \frac{e^{z} + e^{-z}}{2} \qquad \sinh{\left( z \right)} = \frac{e^{z} - e^{-z}}{2}
+\end{align*}
+from this, it can be deduced that
+\begin{equation*}
+    \cos{\left( z \right)} = \cosh{\left( i z \right)} \quad \text{and} \quad i \sin{\left( z \right)} = \sinh{\left( i z \right)}
+\end{equation*}
+or similarly,
+\begin{equation*}
+    \cosh{\left( z \right)} = \cos{\left( i z \right)} \quad \text{and} \quad i \sinh{\left( z \right)} = \sin{\left( i z \right)}.
+\end{equation*}
+\subsection{Complex Logarithm}
+The natural logarithm of a complex number \(z\), is denoted
+\begin{equation*}
+    w = \log{\left( z \right)}
+\end{equation*}
+and is defined as the solution to \(e^w = z\) for all \(z \neq 0\).
+Writing \(w\) in polar form reveals that there are many solutions to
+this equation,
+\begin{equation*}
+    e^{\abs{w}} e^{i \arg{w}} = z.
+\end{equation*}
 \end{document}
