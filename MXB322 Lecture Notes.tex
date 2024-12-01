@@ -4,6 +4,9 @@
 \input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
+\usepackage{calc}
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\Log}{Log}
 
 % Header and footer
 \newcommand{\unitName}{Partial Differential Equations}
@@ -353,7 +356,7 @@ where \(k\) is the thermal diffusivity of the rod:
 \begin{equation*}
     \pdv{u}{t} = k\pdv[order=2]{u}{x}.
 \end{equation*}
-More generally, we can write the PDE aas
+More generally, we can write the PDE as
 \begin{equation*}
     \pdv{\symbfit{u}}{t} = k \Delta{\symbfit{u}}
 \end{equation*}
@@ -991,7 +994,7 @@ Here consider a solution of the form
 \end{equation*}
 so that
 \begin{align*}
-    u_{rr} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta}                        & = 0                                      \\
+    u_{r r} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta}                        & = 0                                      \\
     R''\Theta + \frac{1}{r} R'\Theta + \frac{1}{r^2} R\Theta''                       & = 0                                      \\
     \frac{R''}{R} + \frac{1}{r} \frac{R'}{R} + \frac{1}{r^2} \frac{\Theta''}{\Theta} & = 0                                      \\
     \frac{R''}{R} + \frac{1}{r} \frac{R'}{R}                                         & = -\frac{1}{r^2} \frac{\Theta''}{\Theta} \\
@@ -1181,7 +1184,7 @@ Laplace transform is defined as follows:
     The Laplace transform of a function \(f\left( t \right)\) is denoted
     \(\mathscr{L}\left\{ f\left( t \right) \right\}\) and is defined:
     \begin{equation*}
-        F\left( s \right) = \mathscr{L}\left\{ f\left( t \right) \right\} = \int_0^\infty f\left( t \right) e^{-st} \odif{t}.
+        F\left( s \right) = \mathscr{L}\left\{ f\left( t \right) \right\} = \int_0^\infty f\left( t \right) e^{-s t} \odif{t}.
     \end{equation*}
     where \(s\) is a complex variable. Note that for this integral to
     exist, \(f\) must not grow faster than \(e^{st}\) as \(t \to \infty\).
@@ -1194,10 +1197,10 @@ solution in the original domain.
 \subsection{Laplace Transform Properties}
 \begin{theorem}[Convolution Theorem for Laplace Transforms]
     \begin{equation*}
-        \mathscr{L}\left\{ \left( f \ast g \right)\left( t \right) \right\} = F\left( s \right) F\left( s \right).
+        \mathscr{L}\left\{ \left( f \ast g \right)\left( t \right) \right\} = F\left( s \right) G\left( s \right).
     \end{equation*}
     \begin{equation*}
-        f\left( t \right) g\left( t \right) = \mathscr{L}\left\{ F\left( s \right) \ast F\left( s \right) \right\}.
+        f\left( t \right) g\left( t \right) = \mathscr{L}^{-1}\left\{ F\left( s \right) \ast G\left( s \right) \right\}.
     \end{equation*}
 \end{theorem}
 \section{Complex Analysis}
@@ -1248,9 +1251,101 @@ The natural logarithm of a complex number \(z\), is denoted
     w = \log{\left( z \right)}
 \end{equation*}
 and is defined as the solution to \(e^w = z\) for all \(z \neq 0\).
-Writing \(w\) in polar form reveals that there are many solutions to
-this equation,
+Using polar form, we can use the periodicity of the complex exponential
+to show that there are infinitely many solutions to this equation.
+\begin{align*}
+    \log{\left( z \right)} & = \ln{\left( \abs*{z} e^{i \arg{\left( z \right)}} \right)} \\
+                           & = \ln{\left( \abs*{z} e^{i \left( \Arg{\left( z \right)} + 2\pi n\right)} \right)} \\
+                           & = \ln{\abs*{z}} + i \left( \Arg{\left( z \right)} + 2 \pi n \right),
+\end{align*}
+where \(\arg{\left( z \right)}\) is the argument of \(z\), defined using
+the principal value of the argument, \(\Arg{\left( z \right)}\), and
+\(n \in \Z\). Here the function \(\ln\) corresponds to the real-valued
+natural logarithm. If we wish to define a principal value \(\Log{\left( z
+\right)}\) whose imaginary part lies in the interval
+\(\linterval{-\pi}{\pi}\), we can use the principal value of the
+argument:
 \begin{equation*}
-    e^{\abs{w}} e^{i \arg{w}} = z.
+    \Log{\left( z \right)} = \ln{\abs*{z}} + i \Arg{\left( z \right)}.
 \end{equation*}
+This lets us also define the complex logarithm in terms of the principal
+logarithm:
+\begin{equation*}
+    \log{\left( z \right)} = \Log{\left( z \right)} + 2 \pi i n.
+\end{equation*}
+\subsection{Analytic Functions}
+In this section, we discuss the idea of differentiability for complex
+functions. Let \(w = f\left( z \right)\) be defined in a neighbourhood
+\(0 < \abs*{z - z_0} < \delta\) of \(z_0\), except possibly at some
+isolated points. We say
+\begin{equation*}
+    \lim_{z \to z_0} f\left( z \right) = w_0
+\end{equation*}
+if for any \(\epsilon > 0\), there exists a \(\delta > 0\) such that
+\begin{equation*}
+    \abs*{f\left( z \right) - w_0} < \epsilon
+\end{equation*}
+for all \(0 < \abs*{z - z_0} < \delta\)\footnote{Note that it is not
+necessary for the function to be defined at \(z_0\) itself: \(f\left( z_0 \right)
+= w_0\).}. As with real functions, this limit must be independent of the
+path taken to approach \(z_0\). The derivative of a complex function
+\(f\left( z \right)\) is defined as
+\begin{equation*}
+    \odv{f}{z} = \lim_{\adif{z} \to 0} \frac{f\left( z + \adif{z} \right) - f\left( z \right)}{\adif{z}},
+\end{equation*}
+provided this limit exists. It follows that all rules of differentiation
+for real functions apply to complex functions. Recall that we can
+express a complex function in terms of its real and imaginary parts:
+\begin{equation*}
+    f\left( z \right) = u\left( x,\: y \right) + i v\left( x,\: y \right).
+\end{equation*}
+Therefore, let us decompose the derivative of \(f\) into its real and
+imaginary parts, using \(\adif{z} = \adif{x} + i \adif{y}\):
+\begin{equation*}
+    \odv{f}{z} = \lim_{\substack{\adif{x} \to 0 \\ \adif{y} \to 0}} \frac{u\left( x + \adif{x},\: y + \adif{y} \right) + i v\left( x + \adif{x},\: y + \adif{y} \right) - u\left( x,\: y \right) - i v\left( x,\: y \right)}{\adif{x} + i \adif{y}}.
+\end{equation*}
+For this limit to exist, the value must be independent of which variable
+approaches zero first. If we consider the limit as \(\adif{y} \to 0\)
+first, we find
+\begin{align*}
+    \odv{f}{z} & = \lim_{\adif{x} \to 0} \frac{u\left( x + \adif{x},\: y \right) - u\left( x,\: y \right)}{\adif{x}} + i \lim_{\adif{x} \to 0} \frac{v\left( x + \adif{x},\: y \right) - v\left( x,\: y \right)}{\adif{x}} \\
+               & = \pdv{u}{x} + i \pdv{v}{x}.
+\end{align*}
+Similarly, if we consider the limit as \(\adif{x} \to 0\) first, we find
+\begin{align*}
+    \odv{f}{z} & = \lim_{\adif{y} \to 0} \frac{u\left( x,\: y + \adif{y} \right) - u\left( x,\: y \right)}{i \adif{y}} + i \lim_{\adif{y} \to 0} \frac{v\left( x,\: y + \adif{y} \right) - v\left( x,\: y \right)}{i \adif{y}} \\
+               & = \frac{1}{i} \pdv{u}{y} + \pdv{v}{y} \\
+               &= \pdv{v}{y} - i \pdv{u}{y}.
+\end{align*}
+Therefore, the complex derivative of a function is given by:
+\begin{equation*}
+    \odv{f}{z} = \pdv{u}{x} + i \pdv{v}{x} = \pdv{v}{y} - i \pdv{u}{y}.
+\end{equation*}
+This implies that the following relationships hold between \(u\) and
+\(v\):
+\begin{equation*}
+    \pdv{u}{x} = \pdv{v}{y} \quad \text{and} \quad \pdv{u}{y} = -\pdv{v}{x}.
+\end{equation*}
+These equations are known as the \textbf{Cauchy-Riemann equations}, and
+are necessary conditions for the complex derivative to exist at a point,
+provided that the partial derivatives of \(u\) and \(v\) are continuous.
+A function that is complex differentiable in a \textbf{neighbourhood} of
+points is said to be \textbf{analytic} at that point. Such functions are
+infinitely smooth (differentiable) and have a convergent Taylor series
+expansion about that point.
+\subsubsection{Harmonic Functions}
+The Cauchy-Riemann equations allow us to relate a complex function to
+Laplace's equation. Consider a complex function \(f\left( z \right) =
+u\left( x,\: y \right) + i v\left( x,\: y \right)\) that is analytic in
+a domain \(\mathcal{D}\). Then, we can show that both \(u\) and \(v\)
+satisfy Laplace's equation using the Cauchy-Riemann equations:
+\begin{align*}
+    \pdv{u}{x} & = \pdv{v}{y}, & \pdv{u}{y} & = -\pdv{v}{x} \\
+    \pdv[order=2]{u}{x} & = \pdv{v}{x,y}, & \pdv[order=2]{u}{y} & = -\pdv{v}{y,x} & \implies \pdv[order=2]{u}{x} = -\pdv[order=2]{u}{y} & \implies \nabla^2 u = 0. \\
+    \pdv{u}{y,x} & = \pdv[order=2]{v}{y}, & \pdv{u}{x,y} & = -\pdv[order=2]{v}{x} & \implies \pdv[order=2]{v}{y} = -\pdv[order=2]{v}{x} & \implies \nabla^2 v = 0.
+\end{align*}
+Here we use Clairaut's theorem to show that the mixed partial derivatives
+are equal. If \(u\) and \(v\) satisfy Laplace's equations and the
+Cauchy-Riemann equations, they are said to be \textbf{harmonic
+conjugates}.
 \end{document}
