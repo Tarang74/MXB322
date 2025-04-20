@@ -51,7 +51,6 @@
 \section{Fourier Series}
 \begin{definition}[Fourier series expansion]
     The \textbf{Fourier series expansion} of \(f\) represents \(f\) by a periodic function using trigonometric (sine and cosine) terms.
-
     Suppose a function \(f\left( x \right)\) is defined on an interval
     \(\interval{-L}{L}\), then the Fourier series expansion of \(f\) is
     given by:
@@ -96,7 +95,7 @@ When:
           term is \(0\), and the first term is \(L\).
     \item \(n \neq m\): \(\left( n - m \right),\: \left( n + m \right) \in \Z\) so that both terms evaluate to \(0\).
 \end{itemize}
-Therefore
+Therefore,
 \begin{equation*}
     \int_{-L}^L \cos{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} =
     \begin{cases}
@@ -125,7 +124,7 @@ When:
     \item \(n = m\): \(n - m = 0\) and \(\left( n + m \right) \in \Z\), so that the integral reduces to \(0\).
     \item \(n \neq m\): \(\left( n - m \right),\: \left( n + m \right) \in \Z\) so that both terms evaluate to \(0\) when integrated separately.
 \end{itemize}
-Therefore
+Therefore,
 \begin{equation*}
     \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} = 0
 \end{equation*}
@@ -147,7 +146,6 @@ In summary:
     \\
     \int_{-L}^L \sin{\left( \frac{n \pi x}{L} \right)} \cos{\left( \frac{m \pi x}{L} \right)} \odif{x} & = 0
 \end{align}
-
 \subsection{Coefficients of the Fourier Series}
 \subsubsection{For \texorpdfstring{\(a_0\)}{a0}}
 For \(a_0\) consider integrating \hyperref[eq:fourier]{Equation~\ref{eq:fourier}} from \(-L\) to \(L\).
@@ -214,7 +212,6 @@ for \(n \in \N\).
 \begin{corollary}[Dirichlet conditions]
     The Dirichlet conditions provide sufficient conditions for a real-valued function \(f\) to be
     equal to its Fourier series \(f_F\) on \(\interval{-L}{L}\), at each point where \(f\) is continuous.
-
     The conditions are:
     \begin{enumerate}
         \item \(f\) has a finite number of maxima and minima over \(\interval{-L}{L}\).
@@ -350,7 +347,7 @@ Using these assumptions, we find
     \int_{x_1}^{x_2} \rho c \pdv{u}{t} \odif{x} & = \left[ \kappa \pdv{u}{x} \right]_{x_2} - \left[ \kappa \pdv{u}{x} \right]_{x_1}   \\
     \int_{x_1}^{x_2} \rho c \pdv{u}{t} \odif{x} & = \int_{x_1}^{x_2} \pdv*{\kappa \pdv{u}{x}}{x} \odif{x}                             \\
     \rho c \pdv{u}{t}                           & = \pdv*{\kappa \pdv{u}{x}}{x}                                                       \\
-    \pdv{u}{t}                                  & = \frac{\kappa}{\rho c} \pdv[order=2]{u}{x}.
+    \pdv{u}{t}                                  & = \frac{\kappa}{\rho c} \pdv[order=2]{u}{x}
 \end{align*}
 where \(k\) is the thermal diffusivity of the rod:
 \begin{equation*}
@@ -367,12 +364,10 @@ Consider an elastic string that is stretched tightly with its two ends
 fixed at \(x = 0\) and \(x = L\) where the vertical displacement of the
 string is given by \(u\left( x,\: t \right)\), and the initial
 displacement is arbitrary: \(u\left( x,\: 0 \right) = f\left( x
-\right)\).
-
-Let \(\theta\left( x,\: t \right)\) be the angle of the string from the
-horizontal with tension \(T\left( x,\: t \right)\) (magnitude). We can
-then apply the law of conservation. In the horizontal direction, assume
-equilibrium:
+\right)\). Let \(\theta\left( x,\: t \right)\) be the angle of the
+string from the horizontal with tension \(T\left( x,\: t \right)\)
+(magnitude). We can then apply the law of conservation. In the
+horizontal direction, assume equilibrium:
 \begin{equation*}
     T\left( x_1,\: t \right) \cos{\left( \theta\left( x_1,\: t \right) \right)} = T\left( x_2,\: t \right) \cos{\left( \theta\left( x_2,\: t \right) \right)}
 \end{equation*}
@@ -764,7 +759,6 @@ Applying the initial conditions gives
     u_n\left( x,\: 0 \right) = A_0 + \sum_{n = 1}^\infty A_n \cos{\left( \frac{n \pi}{L} x \right)} = f\left( x \right)
 \end{align*}
 so that the coefficients \(A_n\) are given by the Fourier cosine coefficients of the initial condition \(f\left( x \right)\).
-
 Applying the second initial condition requires the first derivative
 w.r.t.\ \(x\):
 \begin{equation*}
@@ -775,7 +769,6 @@ so that
     \pdv{u}{x}\left( x,\: 0 \right) = B_0 + \sum_{n = 1}^\infty \frac{n \pi}{L} c B_n \cos{\left( \frac{n \pi}{L} x \right)} = 0.
 \end{equation*}
 In this case, a zero initial velocity requires \(B_0 = B_n = 0\).
-
 Therefore, the solution to the IBVP is given by
 \begin{equation*}
     u\left( x,\: t \right) = A_0 + \sum_{n = 1}^\infty A_n \cos{\left( \frac{n \pi}{L} x \right)} \cos{\left( \frac{n \pi}{L} c t \right)},
@@ -790,7 +783,6 @@ Let us assume the following boundary conditions for Laplace's equation:
     u\left( x,\: 0 \right) = 0, \quad \quad u\left( x,\: 1 \right) = x^2, \quad \quad u\left( 0,\: y \right) = u\left( 1,\: y \right) = 0
 \end{equation*}
 so that our region of interest is given by the unit square.
-
 Then by using the ansatz
 \begin{align*}
     \pdv[order=2]{u}{x} + \pdv[order=2]{u}{y}   & = 0                          \\
@@ -803,17 +795,16 @@ This results in the following two ODEs
     X'' - \alpha_n X & = 0 \\
     Y'' + \alpha_n Y & = 0
 \end{align*}
-\subsubsection{Problem for \(X\)}
+\subsubsection{Problem for \texorpdfstring{\(X\)}{X}}
 Let us first consider the problem for \(X\) as a boundary condition for
 \(Y\) is nonhomogeneous.
-
 From the heat equation, we know that the only nontrivial solutions to
 this ODE occur when
 \begin{equation*}
     \alpha_n = - n^2 \pi^2 < 0, \quad \quad X\left( x \right) = X_n\left( x \right) = c \sin{\left( n \pi x \right)}, \quad \quad n = 1,\: 2,\: 3,\: \dots
 \end{equation*}
 for constant \(c\).
-\subsubsection{Problem for \(Y\)}
+\subsubsection{Problem for \texorpdfstring{\(Y\)}{Y}}
 The problem for \(Y\) yields the following solution:
 \begin{equation*}
     Y\left( y \right) = Y_n\left( y \right) = A_n \cosh{\left( n \pi y \right)} + B_n \sinh{\left( n \pi y \right)}.
@@ -854,10 +845,9 @@ with the boundary conditions
 where both boundary conditions must be non-trivial (\(l\) or \(h\) is non-zero). A Sturm-Liouville problem is
 \textbf{regular} when \(p\left( x \right), w\left( x \right) > 0\), and \(p\left( x \right), p'\left( x \right), q\left( x \right), w\left( x \right)\) are continuous
 over the interval \(\interval{a}{b}\).
-
 A second-order ODE of the form
 \begin{equation*}
-    a_2\left( x \right) y''\left( x \right) + a_1\left( x \right) y'\left( x \right) + a_0\left( x \right) y\left( x \right) = 0
+    a_2\left( x \right) y''\left( x \right) + a_1\left( x \right) y'\left( x \right) + a_0\left( x \right) y\left( x \right) = \lambda y\left( x \right)
 \end{equation*}
 can be converted into SL form by multiplying the ODE by the integrating factor
 \begin{equation*}
@@ -890,10 +880,8 @@ It then follows that all solutions to this ODE produce an infinite
 number of real \textbf{eigenvalues} \(\lambda_i\), where \(\lambda_n
 \to \infty\) as \(n \to \infty\), where the corresponding
 \textbf{eigenfunctions} \(u_i\) of \(L\) are \textbf{orthogonal} with
-respect to the weighted inner product.
-
-Taking the weighted inner product between normalised eigenfunctions
-shows that
+respect to the weighted inner product. Taking the weighted inner
+product between normalised eigenfunctions shows that
 \begin{equation*}
     \abracket*{y_n,\: y_m} = \int_a^b y_n\left( x \right) y_m\left( x \right) w\left( x \right) \odif{x} = \delta_{mn}
 \end{equation*}
@@ -982,7 +970,7 @@ By using the multivariable chain rule, we can express the Laplacian in terms of 
 Consider the following example of Laplace's equation on a disk of
 radius \(a\):
 \begin{equation*}
-    \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta} = 0, \quad\quad 0 \leq r < a, -\pi < \theta \leq \pi,
+    \pdv[order=2]{u}{r} + \frac{1}{r} \pdv{u}{r} + \frac{1}{r^2} \pdv[order=2]{u}{\theta} = 0, \quad\quad 0 \leqslant r < a, -\pi < \theta \leqslant \pi,
 \end{equation*}
 for \(u = u\left( r,\: \theta \right)\) with the following boundary condition on \(r = a\):
 \begin{equation*}
@@ -994,7 +982,7 @@ Here consider a solution of the form
 \end{equation*}
 so that
 \begin{align*}
-    u_{r r} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta}                        & = 0                                      \\
+    u_{r r} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta\theta}                       & = 0                                      \\
     R''\Theta + \frac{1}{r} R'\Theta + \frac{1}{r^2} R\Theta''                       & = 0                                      \\
     \frac{R''}{R} + \frac{1}{r} \frac{R'}{R} + \frac{1}{r^2} \frac{\Theta''}{\Theta} & = 0                                      \\
     \frac{R''}{R} + \frac{1}{r} \frac{R'}{R}                                         & = -\frac{1}{r^2} \frac{\Theta''}{\Theta} \\
@@ -1075,7 +1063,6 @@ steady-state solution takes the form,
     u\left( x,\: t \right) = U\left( x \right),
 \end{equation*}
 where \(U\left( x \right)\) satisfies the PDE and boundary conditions, but not the initial condition for \(u\left( x,\: t \right)\).
-
 To find the evolution of a system from an initial condition \(u\left(
 x,\: 0 \right) = f\left( x \right)\), we need to find a transient
 solution \(v\left( x,\: t \right)\):
@@ -1093,28 +1080,27 @@ For a general nonhomogeneous term \(F = F\left( x,\: t \right)\), we
 assume that the solution will take the form of an eigenfunction
 expansion in one variable, where the eigenfunctions are those that come
 from the homogeneous version of the problem, and the unknown
-coefficients are functions of the other variable.
-
-Here the boundary conditions must be homogeneous, and therefore, the
-PDE must be transformed (i.e., via a subtraction), to cancel any
-nonhomogeneous terms. This can be done by choosing an appropriate
-\(v\left( x,\: t \right)\) which yields a new PDE.
-\section{The Fourier Transform}
+coefficients are functions of the other variable. Here the boundary
+conditions must be homogeneous, and therefore, the PDE must be
+transformed (i.e., via a subtraction), to cancel any nonhomogeneous
+terms. This can be done by choosing an appropriate \(v\left( x,\: t
+\right)\) which yields a new PDE.
+\section{Integral Transforms}
+\subsection{The Fourier Transform}
 The Fourier series approximation is defined on the finite domain
 \(\interval{-L}{L}\), where the approximation \(f_F\) is periodically
 extended outside of this domain. The Fourier transform considers the
 limiting process \(L \to \infty\) to obtain a transform defined on the
-infinite domain \(\ointerval{-\infty}{\infty}\).
-
-Let \(\omega_n = \frac{n \pi}{L}\) for \(n \in \Z\) so that
-\(\fdif{\omega} = \omega_{n + 1} - \omega_n = \frac{\pi}{L}\). Then
+infinite domain \(\ointerval{-\infty}{\infty}\). Let \(\omega_n =
+\frac{n \pi}{L}\) for \(n \in \Z\) so that \(\fdif{\omega} = \omega_{n
++ 1} - \omega_n = \frac{\pi}{L}\). Then
 \begin{multline*}
     f_F\left( x \right) = \left[ \frac{1}{2\pi} \int_{-L}^L f\left( x \right) \odif{x} \right] \fdif{\omega}
     + \frac{1}{\pi} \sum_{n = 1}^\infty
     \left( \left[ \int_{-L}^L f\left( z \right) \cos{\left( \omega_n z \right)} \odif{z} \right] \cos{\left( \omega_n x \right)} \right. \\
     + \left. \left[ \int_{-L}^L f\left( z \right) \sin{\left( \omega_n z \right)} \odif{z} \right] \sin{\left( \omega_n x \right)} \right) \fdif{\omega}.
 \end{multline*}
-Taking the limit \(L \to \infty\), results in \(\fdif{\omega} \to 0\), so that
+Taking the limit \(L \to \infty\) results in \(\fdif{\omega} \to 0\), so that
 \begin{equation*}
     f_F\left( x \right) = \frac{1}{\pi} \int_0^\infty \left[ \int_{-\infty}^\infty f\left( z \right) \cos{\left( \omega z \right)} \odif{z} \right] \cos{\left( \omega x \right)} \odif{\omega} + \frac{1}{\pi} \int_0^\infty \left[ \int_{-\infty}^\infty f\left( z \right) \sin{\left( \omega z \right)} \odif{z} \right] \sin{\left( \omega x \right)} \odif{\omega}.
 \end{equation*}
@@ -1156,30 +1142,13 @@ simplification:
         f_F\left( x \right) = \mathscr{F}^{-1}\left\{ f\left( x \right) \right\} = \frac{1}{2 \pi} \int_{-\infty}^\infty \hat{f}\left( \omega \right) e^{i \omega x} \odif{\omega}.
     \end{equation*}
 \end{definition}
-\subsection{Solving PDEs}
 PDEs that are defined on infinite domains can utilise the Fourier
 transform to transform the problem to an ODE in \(\omega\). In such
 problems, it is required the solution be bounded as the spatial
 variable approaches \(\pm \infty\).
-\subsection{Fourier Transform Properties}
-\begin{definition}[Convolution]
-    The convolution of two functions \(f\left( x \right)\) and \(g\left( x \right)\) is defined:
-    \begin{equation*}
-        \left( f \ast g \right)\left( x \right) = \int_{-\infty}^\infty f\left( x - z \right) g\left( z \right) \odif{z}.
-    \end{equation*}
-\end{definition}
-\begin{theorem}[Convolution Theorem for Fourier Transforms]
-    \begin{equation*}
-        \mathscr{F}\left\{ \left( f \ast g \right)\left( x \right) \right\} = \hat{f}\left( \omega \right) \hat{g}\left( \omega \right).
-    \end{equation*}
-    \begin{equation*}
-        \frac{1}{2\pi} \left( \hat{f} \ast \hat{g} \right)\left( \omega \right) = \mathscr{F}\left\{ f\left( x \right) g\left( x \right) \right\}.
-    \end{equation*}
-\end{theorem}
-\section{The Laplace Transform}
+\subsection{The Laplace Transform}
 The Laplace transform is a generalisation of the Fourier transform that
 is defined on the semi-infinite domain \(\ointerval{0}{\infty}\). The
-Laplace transform is defined as follows:
 \begin{definition}[Laplace Transform]
     The Laplace transform of a function \(f\left( t \right)\) is denoted
     \(\mathscr{L}\left\{ f\left( t \right) \right\}\) and is defined:
@@ -1189,12 +1158,24 @@ Laplace transform is defined as follows:
     where \(s\) is a complex variable. Note that for this integral to
     exist, \(f\) must not grow faster than \(e^{st}\) as \(t \to \infty\).
 \end{definition}
-\subsection{Solving PDEs}
 PDEs that are defined on semi-infinite domains can utilise the Laplace
 transform to transform the problem to an ODE of the remaining variable.
 Once solved, the inverse Laplace transform can be used to find the
 solution in the original domain.
-\subsection{Laplace Transform Properties}
+\subsection{The Convolution}
+The convolution of two functions \(f\left( x \right)\) and \(g\left( x
+\right)\) is defined:
+\begin{equation*}
+    \left( f \ast g \right)\left( x \right) = \int_{-\infty}^\infty f\left( x - z \right) g\left( z \right) \odif{z}.
+\end{equation*}
+\begin{theorem}[Convolution Theorem for Fourier Transforms]
+    \begin{equation*}
+        \mathscr{F}\left\{ \left( f \ast g \right)\left( x \right) \right\} = \hat{f}\left( \omega \right) \hat{g}\left( \omega \right).
+    \end{equation*}
+    \begin{equation*}
+        \frac{1}{2\pi} \left( \hat{f} \ast \hat{g} \right)\left( \omega \right) = \mathscr{F}\left\{ f\left( x \right) g\left( x \right) \right\}.
+    \end{equation*}
+\end{theorem}
 \begin{theorem}[Convolution Theorem for Laplace Transforms]
     \begin{equation*}
         \mathscr{L}\left\{ \left( f \ast g \right)\left( t \right) \right\} = F\left( s \right) G\left( s \right).
@@ -1204,7 +1185,146 @@ solution in the original domain.
     \end{equation*}
 \end{theorem}
 \section{Complex Analysis}
-\subsection{Complex-valued Functions}
+\subsection{Complex Numbers}
+\subsubsection{Definition}
+A complex number is any number of the form \(x + i y\) where \(x,y \in
+\R\) and \(i^2 = -1\). Here, \(i\) is known as the imaginary unit. The
+set of complex numbers \(\C\) can therefore be defined as
+\begin{equation*}
+    \C = \left\{ x + i y : x,y \in \R \right\}.
+\end{equation*}
+The real part of a complex number \(z = x + i y\) is denoted
+\(\Re\left( z \right) = x\) and the imaginary part is denoted
+\(\Im\left( z \right) = y\).
+\subsubsection{Operations on Complex Numbers}
+Addition and multiplication of two complex numbers is performed on the
+real and imaginary components separately. All axioms for addition and
+multiplication in \(\R\) are preserved in \(\C\):
+\begin{align*}
+    z_1 + z_2 & = \left( x_1 + i y_1 \right) + \left( x_2 + i y_2 \right) = \left( x_1 + x_2 \right) + i \left( y_1 + y_2 \right)                \\
+    z_1 z_2   & = \left( x_1 + i y_1 \right) \left( x_2 + i y_2 \right) = \left( x_1 x_2 - y_1 y_2 \right) + i \left( x_1 y_2 + x_2 y_1 \right).
+\end{align*}
+\subsubsection{Polar Form}
+A complex number \(z = x + i y\) can be expressed in polar form as
+\begin{equation*}
+    z = r \left( \cos{\left( \theta \right)} + i \sin{\left( \theta \right)} \right)
+\end{equation*}
+where \(r\) is the modulus of \(z\) defined
+\begin{equation*}
+    \abs*{z} = r = \sqrt{x^2 + y^2},
+\end{equation*}
+and \(\theta\) is the argument of \(z\) defined
+\begin{equation*}
+    \Arg\left( z \right) = \theta = \arctan{\left( \frac{y}{x} \right)}.
+\end{equation*}
+Euler's formula states that
+\begin{equation*}
+    e^{i \theta} = \cos{\left( \theta \right)} + i \sin{\left( \theta \right)},
+\end{equation*}
+this allows us to express the polar form of a complex number using the
+exponential function:
+\begin{equation*}
+    z = r e^{i \theta}.
+\end{equation*}
+\subsubsection{Complex Conjugate}
+The complex conjugate of a complex number \(z = x + i y\) is denoted
+\(\overline{z} = x - i y\). This operation can be used to find the
+modulus of a complex number:
+\begin{equation*}
+    \abs*{z} = \sqrt{z \overline{z}} \iff \abs*{z}^2 = z \overline{z}.
+\end{equation*}
+\subsubsection{Theorems on the Complex Plane}
+\begin{theorem}[De Moivre's formula]
+    For any complex number \(z = r e^{i \theta}\) and integer \(n\),
+    \begin{equation*}
+        z^n = r^n \left( \cos{\left( n \theta \right)} + i \sin{\left( n \theta \right)} \right).
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Using Euler's formula, we have
+    \begin{align*}
+        z^n & = \left( r e^{i \theta} \right)^n = r^n e^{i n \theta} = r^n \left( \cos{\left( n \theta \right)} + i \sin{\left( n \theta \right)} \right) \\
+            & = r^n \cos{\left( n \theta \right)} + i r^n \sin{\left( n \theta \right)}.
+    \end{align*}
+\end{proof}
+\begin{theorem}[Triangle inequality for complex numbers]
+    For any two complex numbers \(z_1\) and \(z_2\):
+    \begin{equation*}
+        \abs*{z_1 + z_2} \leqslant \abs*{z_1} + \abs*{z_2}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We will prove this theorem by showing that this inequality is a
+    tautology. Let \(z_1 = x_1 + i y_1\) and \(z_2 = x_2 + i y_2\).
+    Then,
+    \begin{align*}
+        \abs*{z_1 + z_2}                                             & \leqslant \abs*{z_1} + \abs*{z_2}                                               \\
+        \abs*{z_1 + z_2}^2                                           & \leqslant \left( \abs*{z_1} + \abs*{z_2} \right)^2                              \\
+        \left( z_1 + z_2 \right) \overline{\left( z_1 + z_2 \right)} & \leqslant \abs*{z_1}^2 + 2 \abs*{z_1} \abs*{z_2} + \abs*{z_2}^2                 \\
+        \left( x_1 + x_2 \right)^2 + \left( y_1 + y_2 \right)^2      & \leqslant x_1^2 + y_1^2 + 2 \abs*{z_1} \abs*{z_2} + x_2^2 + y_2^2               \\
+        x_1^2 + 2 x_1 x_2 + x_2^2 + y_1^2 + 2 y_1 y_2 + y_2^2        & \leqslant x_1^2 + y_1^2 + 2 \abs*{z_1} \abs*{z_2} + x_2^2 + y_2^2               \\
+        2 x_1 x_2 + 2 y_1 y_2                                        & \leqslant 2 \abs*{z_1} \abs*{z_2}                                               \\
+        x_1 x_2 + y_1 y_2                                            & \leqslant \left( x_1^2 + y_1^2 \right)^{1/2} \left( x_2^2 + y_2^2 \right)^{1/2} \\
+        \left( x_1 x_2 + y_1 y_2 \right)^2                           & \leqslant \left( x_1^2 + y_1^2 \right) \left( x_2^2 + y_2^2 \right)             \\
+        x_1^2 x_2^2 + 2 x_1 x_2 y_1 y_2 + y_1^2 y_2^2                & \leqslant x_1^2 x_2^2 + x_1^2 y_2^2 + x_2^2 y_1^2 + y_1^2 y_2^2                 \\
+        2 x_1 x_2 y_1 y_2                                            & \leqslant x_1^2 y_2^2 + x_2^2 y_1^2                                             \\
+        0                                                            & \leqslant x_1^2 y_2^2 - 2 x_1 x_2 y_1 y_2 + x_2^2 y_1^2                         \\
+        0                                                            & \leqslant \left( x_1 y_2 - x_2 y_1 \right)^2.
+    \end{align*}
+\end{proof}
+\begin{theorem}[Reverse triangle inequality for complex numbers]
+    For any two complex numbers \(z_1\) and \(z_2\):
+    \begin{equation*}
+        \abs*{\abs*{z_1} - \abs*{z_2}} \leqslant \abs*{z_1 - z_2}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    \begin{equation*}
+        \abs*{z_1} = \abs*{\left( z_1 - z_2 \right) + z_2} \leqslant \abs*{z_1 - z_2} + \abs*{z_2} \implies \abs*{z_1} - \abs*{z_2} \leqslant \abs*{z_1 - z_2},
+    \end{equation*}
+    and
+    \begin{equation*}
+        \abs*{z_2} = \abs*{\left( z_2 - z_1 \right) + z_1} \leqslant \abs*{z_2 - z_1} + \abs*{z_1} \implies \abs*{z_2} - \abs*{z_1} \leqslant \abs*{z_2 - z_1}.
+    \end{equation*}
+    But
+    \begin{align*}
+        \abs*{z_1 - z_2} & = \sqrt{\left( x_1 - x_2 \right)^2 + \left( y_1 - y_2 \right)^2} \\
+                         & = \sqrt{\left( x_2 - x_1 \right)^2 + \left( y_2 - y_1 \right)^2} \\
+                         & = \abs*{z_2 - z_1}.
+    \end{align*}
+    Hence,
+    \begin{equation*}
+        \abs*{\abs*{z_1} - \abs*{z_2}} \leqslant \abs*{z_1 - z_2}.
+    \end{equation*}
+\end{proof}
+\begin{corollary}[Triangle inequality for multiple complex numbers]
+    The triangle inequality can be extended to any number of complex
+    numbers:
+    \begin{equation*}
+        \abs*{\sum_{i = 1}^n z_i} \leqslant \sum_{i = 1}^n \abs*{z_i}.
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    We will prove this corollary by induction. The base case with
+    \(n = 1\) complex numbers is trivially true:
+    \begin{equation*}
+        \abs*{z_1} \leqslant \abs*{z_1}.
+    \end{equation*}
+    If we assume that this corollary holds for \(n = k\) complex
+    numbers:
+    \begin{equation*}
+        \abs*{\sum_{i = 1}^k z_i} \leqslant \sum_{i = 1}^k \abs*{z_i}.
+    \end{equation*}
+    we can show that this corollary also holds for \(n = k + 1\) complex
+    numbers:
+    \begin{equation*}
+        \abs*{\sum_{i = 1}^{k + 1} z_i} = \abs*{\sum_{i = 1}^k z_i + z_{k + 1}} \leqslant \abs*{\sum_{i = 1}^k z_i} + \abs*{z_{k + 1}} \leqslant \sum_{i = 1}^k \abs*{z_i} + \abs*{z_{k + 1}} = \sum_{i = 1}^{k + 1} \abs*{z_i}.
+    \end{equation*}
+    Since this corollary holds for the base case, and also for the
+    inductive step whenever the inductive hypothesis is true, the
+    corollary holds for all \(n \in \N\).
+\end{proof}
+\subsection{Complex-Valued Functions}
 A complex-valued function \(f\) maps the complex values \(z\) in a set
 \(S\) to a unique set of complex values \(w\) in a set \(T\). The
 function \(f\) is defined:
@@ -1219,7 +1339,7 @@ functions of \(x\) and \(y\):
 \end{equation*}
 Therefore \(f\) is a mapping of values from the
 \(\left( x,\: y \right)\) plane to the \(\left( u,\: v \right)\) plane.
-\subsection{Complex Exponential}
+\subsubsection{Complex Exponentials}
 The complex exponential is defined
 \begin{equation*}
     w = e^z = \exp{\left( z \right)} = e^x \left( \cos{\left( y \right)} + i \sin{\left( y \right)} \right).
@@ -1231,8 +1351,8 @@ several properties of the real exponential:
     \item \(e^{n z} = \left( e^z \right)^n\) for \(n \in \Z\)
 \end{enumerate}
 \subsubsection{Trigonometric and Hyperbolic Functions}
-Using Euler's formula, the following functions may be expressed using
-complex exponentials.
+Using Euler's formula, we can derive the exponential form of the
+following trigonometric functions:
 \begin{align*}
     \cos{\left( z \right)} = \frac{e^{i z} + e^{-i z}}{2} \qquad \sin{\left( z \right)} = \frac{e^{i z} - e^{-i z}}{2i} \\
     \cosh{\left( z \right)} = \frac{e^{z} + e^{-z}}{2} \qquad \sinh{\left( z \right)} = \frac{e^{z} - e^{-z}}{2}
@@ -1245,7 +1365,7 @@ or similarly,
 \begin{equation*}
     \cosh{\left( z \right)} = \cos{\left( i z \right)} \quad \text{and} \quad i \sinh{\left( z \right)} = \sin{\left( i z \right)}.
 \end{equation*}
-\subsection{Complex Logarithm}
+\subsubsection{Complex Logarithms}
 The natural logarithm of a complex number \(z\), is denoted
 \begin{equation*}
     w = \log{\left( z \right)}
@@ -1254,7 +1374,7 @@ and is defined as the solution to \(e^w = z\) for all \(z \neq 0\).
 Using polar form, we can use the periodicity of the complex exponential
 to show that there are infinitely many solutions to this equation.
 \begin{align*}
-    \log{\left( z \right)} & = \ln{\left( \abs*{z} e^{i \arg{\left( z \right)}} \right)} \\
+    \log{\left( z \right)} & = \ln{\left( \abs*{z} e^{i \arg{\left( z \right)}} \right)}                        \\
                            & = \ln{\left( \abs*{z} e^{i \left( \Arg{\left( z \right)} + 2\pi n\right)} \right)} \\
                            & = \ln{\abs*{z}} + i \left( \Arg{\left( z \right)} + 2 \pi n \right),
 \end{align*}
@@ -1262,7 +1382,7 @@ where \(\arg{\left( z \right)}\) is the argument of \(z\), defined using
 the principal value of the argument, \(\Arg{\left( z \right)}\), and
 \(n \in \Z\). Here the function \(\ln\) corresponds to the real-valued
 natural logarithm. If we wish to define a principal value \(\Log{\left( z
-\right)}\) whose imaginary part lies in the interval
+    \right)}\) whose imaginary part lies in the interval
 \(\linterval{-\pi}{\pi}\), we can use the principal value of the
 argument:
 \begin{equation*}
@@ -1273,7 +1393,7 @@ logarithm:
 \begin{equation*}
     \log{\left( z \right)} = \Log{\left( z \right)} + 2 \pi i n.
 \end{equation*}
-\subsection{Analytic Functions}
+\subsubsection{Analytic Functions}
 In this section, we discuss the idea of differentiability for complex
 functions. Let \(w = f\left( z \right)\) be defined in a neighbourhood
 \(0 < \abs*{z - z_0} < \delta\) of \(z_0\), except possibly at some
@@ -1286,8 +1406,8 @@ if for any \(\epsilon > 0\), there exists a \(\delta > 0\) such that
     \abs*{f\left( z \right) - w_0} < \epsilon
 \end{equation*}
 for all \(0 < \abs*{z - z_0} < \delta\)\footnote{Note that it is not
-necessary for the function to be defined at \(z_0\) itself: \(f\left( z_0 \right)
-= w_0\).}. As with real functions, this limit must be independent of the
+    necessary for the function to be defined at \(z_0\) itself: \(f\left( z_0 \right)
+    = w_0\).}. As with real functions, this limit must be independent of the
 path taken to approach \(z_0\). The derivative of a complex function
 \(f\left( z \right)\) is defined as
 \begin{equation*}
@@ -1314,8 +1434,8 @@ first, we find
 Similarly, if we consider the limit as \(\adif{x} \to 0\) first, we find
 \begin{align*}
     \odv{f}{z} & = \lim_{\adif{y} \to 0} \frac{u\left( x,\: y + \adif{y} \right) - u\left( x,\: y \right)}{i \adif{y}} + i \lim_{\adif{y} \to 0} \frac{v\left( x,\: y + \adif{y} \right) - v\left( x,\: y \right)}{i \adif{y}} \\
-               & = \frac{1}{i} \pdv{u}{y} + \pdv{v}{y} \\
-               &= \pdv{v}{y} - i \pdv{u}{y}.
+               & = \frac{1}{i} \pdv{u}{y} + \pdv{v}{y}                                                                                                                                                                         \\
+               & = \pdv{v}{y} - i \pdv{u}{y}.
 \end{align*}
 Therefore, the complex derivative of a function is given by:
 \begin{equation*}
@@ -1329,10 +1449,30 @@ This implies that the following relationships hold between \(u\) and
 These equations are known as the \textbf{Cauchy-Riemann equations}, and
 are necessary conditions for the complex derivative to exist at a point,
 provided that the partial derivatives of \(u\) and \(v\) are continuous.
-A function that is complex differentiable in a \textbf{neighbourhood} of
-points is said to be \textbf{analytic} at that point. Such functions are
+A function that is complex differentiable in the \textbf{neighbourhood}
+of a point is said to be \textbf{analytic} at that point. Such functions are
 infinitely smooth (differentiable) and have a convergent Taylor series
-expansion about that point.
+expansion about that point. A function that is analytic on the entire
+complex plane is said to be \textbf{entire}.
+\subsubsection{Common Analytic Functions}
+Using the definition of the complex derivative, we can show that the
+following functions are analytic in the complex plane:
+\begin{itemize}
+    \item Power functions \(z^n\) for \(n \in \Z\)
+    \item Exponential functions \(e^z\)
+    \item Trigonometric functions \(\cos{\left( z \right)}\) and
+          \(\sin{\left( z \right)}\)
+    \item Hyperbolic functions \(\cosh{\left( z \right)}\) and
+          \(\sinh{\left( z \right)}\)
+    \item Rational functions \(f\left( z \right) = \frac{P\left( z
+          \right)}{Q\left( z \right)}\) (except when \(Q\left( z
+          \right) = 0\))
+    \item Any linear combination or composition of the above functions
+    \item Logarithmic, non-integer power, and inverse trigonometric
+          functions (except at branch points or branch cuts)
+\end{itemize}
+Additionally, all rules of differentiation for real functions also apply
+to complex functions.
 \subsubsection{Harmonic Functions}
 The Cauchy-Riemann equations allow us to relate a complex function to
 Laplace's equation. Consider a complex function \(f\left( z \right) =
@@ -1340,12 +1480,518 @@ u\left( x,\: y \right) + i v\left( x,\: y \right)\) that is analytic in
 a domain \(\mathcal{D}\). Then, we can show that both \(u\) and \(v\)
 satisfy Laplace's equation using the Cauchy-Riemann equations:
 \begin{align*}
-    \pdv{u}{x} & = \pdv{v}{y}, & \pdv{u}{y} & = -\pdv{v}{x} \\
-    \pdv[order=2]{u}{x} & = \pdv{v}{x,y}, & \pdv[order=2]{u}{y} & = -\pdv{v}{y,x} & \implies \pdv[order=2]{u}{x} = -\pdv[order=2]{u}{y} & \implies \nabla^2 u = 0. \\
-    \pdv{u}{y,x} & = \pdv[order=2]{v}{y}, & \pdv{u}{x,y} & = -\pdv[order=2]{v}{x} & \implies \pdv[order=2]{v}{y} = -\pdv[order=2]{v}{x} & \implies \nabla^2 v = 0.
+    \pdv{u}{x}          & = \pdv{v}{y},          & \pdv{u}{y}          & = -\pdv{v}{x}                                                                                           \\
+    \pdv[order=2]{u}{x} & = \pdv{v}{x,y},        & \pdv[order=2]{u}{y} & = -\pdv{v}{y,x}        & \implies \pdv[order=2]{u}{x} = -\pdv[order=2]{u}{y} & \implies \nabla^2 u = 0. \\
+    \pdv{u}{y,x}        & = \pdv[order=2]{v}{y}, & \pdv{u}{x,y}        & = -\pdv[order=2]{v}{x} & \implies \pdv[order=2]{v}{y} = -\pdv[order=2]{v}{x} & \implies \nabla^2 v = 0.
 \end{align*}
 Here we use Clairaut's theorem to show that the mixed partial derivatives
 are equal. If \(u\) and \(v\) satisfy Laplace's equations and the
 Cauchy-Riemann equations, they are said to be \textbf{harmonic
-conjugates}.
+    conjugates}.
+\subsection{Contour Integrals}
+Consider the oriented curve \(\mathcal{C}\) in the complex plane, which
+is parameterised by \(z = z\left( t \right)\) for \(a \leqslant t
+\leqslant b\):
+\begin{equation*}
+    z\left( t \right) = x\left( t \right) + i y\left( t \right),
+\end{equation*}
+where \(x\) and \(y\) are real continuous functions. A curve is said to
+be:
+\begin{itemize}
+    \item (piecewise) \textbf{smooth} if \(\odv{z}{t} = \odv{x}{t} + i \odv{y}{t}\) is (piecewise) continuous and nonzero for all \(t\)
+    \item \textbf{closed} if \(z\left( a \right) = z\left( b \right)\)
+    \item \textbf{simple} if it does not intersect itself: \(z\left( t_1 \right) \neq z\left( t_2 \right)\) for \(t_1 \neq t_2\)
+\end{itemize}
+The line integral of a complex function \(f\left( z \right)\) along a
+curve \(\mathcal{C}\) is defined as a contour integral:
+\begin{equation*}
+    \int_{\mathcal{C}} f\left( z \right) \odif{z} = \int_a^b f\left( z\left( t \right) \right) \odv{z}{t} \odif{t}.
+\end{equation*}
+A useful result in complex analysis is the closed line integral of the
+complex power function:
+\begin{equation*}
+    \oint_{\mathcal{C}_R} z^n \odif{z}
+\end{equation*}
+where \(\mathcal{C}_R\) is a circle of radius \(R\) oriented anticlockwise.
+We can solve this integral using the parametrisation \(z\left( t \right) = R e^{i t}\)
+for \(0 \leqslant t \leqslant 2 \pi\):
+\begin{align*}
+    \oint_{\mathcal{C}_R} z^n \odif{z} & = \int_0^{2 \pi} \left( R e^{i t} \right)^n i R e^{i t} \odif{t}                                    \\
+                                       & = i R^{n + 1} \int_0^{2 \pi} e^{i \left( n + 1 \right) t} \odif{t}                                  \\
+                                       & = i R^{n + 1} \left[ \frac{e^{i \left( n + 1 \right) t}}{i \left( n + 1 \right)} \right]_0^{2 \pi}.
+\end{align*}
+When \(n \neq -1\), the integral evaluates to zero, as the exponential
+function is periodic with period \(2 \pi\). When \(n = -1\), the second
+line evaluates to:
+\begin{equation*}
+    i R^0 \int_0^{2 \pi} \odif{t} = 2 \pi i.
+\end{equation*}
+Therefore,
+\begin{equation*}
+    \oint_{\mathcal{C}_R} z^n \odif{z} =
+    \begin{cases}
+        2 \pi i & n = -1,    \\
+        0       & n \neq -1.
+    \end{cases}
+\end{equation*}
+\subsubsection{Contour Integral Theorems}
+\begin{theorem}[Cauchy's integral theorem]
+    Let \(f\left( z \right)\) be analytic on and within a simple closed
+    curve \(\mathcal{C}\):
+    \begin{equation*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z} = 0.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Let \(f\left( z \right) = u\left( x,\: y \right) + i v\left( x,\: y \right)\)
+    be analytic on and within \(\mathcal{C}\). Then,
+    \begin{align*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z} & = \oint_{\mathcal{C}} \left( u\left( x,\: y \right) + i v\left( x,\: y \right) \right) \left( \odif{x} + i \odif{y} \right)                                                                                      \\
+                                                       & = \oint_{\mathcal{C}} \left( u\left( x,\: y \right) \odif{x} - v\left( x,\: y \right) \odif{y} \right) + i \oint_{\mathcal{C}} \left( v\left( x,\: y \right) \odif{x} + u\left( x,\: y \right) \odif{y} \right).
+    \end{align*}
+    By Green's theorem, this becomes,
+    \begin{equation*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z} = \iint_{\mathcal{D}} \left( \pdv{v}{x} - \pdv{u}{y} \right) \odif{x} \odif{y} + i \iint_{\mathcal{D}} \left( \pdv{u}{x} + \pdv{v}{y} \right) \odif{x} \odif{y},
+    \end{equation*}
+    where \(\mathcal{D}\) is the region enclosed by \(\mathcal{C}\). As
+    \(f\) is analytic, it satisfies the Cauchy-Riemann equations, so that
+    both integrands are zero. Therefore, the integral is zero:
+    \begin{equation*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z} = \iint_{\mathcal{D}} \left( 0 \right) \odif{x} \odif{y} + i \iint_{\mathcal{D}} \left( 0 \right) \odif{x} \odif{y} = 0.
+    \end{equation*}
+\end{proof}
+\begin{corollary}[Path independence]
+    The contour integral between any two points \(z_1\) and \(z_2\) is
+    independent of path, provided that the path is in a region where the
+    integrand is analytic.
+\end{corollary}
+\begin{proof}
+    Let \(\mathcal{C}_1\) and \(\mathcal{C}_2\) be two curves connecting
+    the points \(z_1\) and \(z_2\) in a region where the function
+    \(f\left( z \right)\) is analytic. Furthermore, the closed curve
+    \(\mathcal{C} = \mathcal{C}_1 - \mathcal{C}_2\) is a simple closed
+    curve which encloses no singularities. By Cauchy's integral theorem,
+    \begin{align*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z}                                                      & = 0                                                 \\
+        \oint_{\mathcal{C}_1} f\left( z \right) \odif{z} - \oint_{\mathcal{C}_2} f\left( z \right) \odif{z} & = 0                                                 \\
+        \oint_{\mathcal{C}_1} f\left( z \right) \odif{z}                                                    & = \oint_{\mathcal{C}_2} f\left( z \right) \odif{z}.
+    \end{align*}
+\end{proof}
+\begin{corollary}[Equivalence of homotopic contours]
+    The contour integral over any two closed contours in a region where
+    the integrand is analytic are equal, provided that the contours can
+    be continuously deformed into each other without crossing any
+    singularities. Such contours are said to be \textbf{homotopic}.
+\end{corollary}
+\begin{proof}
+    Let \(\mathcal{C}_1\) and \(\mathcal{C}_2\) be two closed contours
+    defined in a region where the function \(f\left( z \right)\) is
+    analytic and assume \(\mathcal{C}_1\) is enclosed by
+    \(\mathcal{C}_2\). Then, we can define a closed curve
+    \(\mathcal{C} = \mathcal{C}_1 + \mathcal{C}_3 - \mathcal{C}_2 - \mathcal{C}_3\),
+    where \(\mathcal{C}_3\) is a curve that connects the endpoints of
+    \(\mathcal{C}_1\) and \(\mathcal{C}_2\) in both directions. By
+    Cauchy's integral theorem,
+    \begin{equation*}
+        \oint_{\mathcal{C}} f\left( z \right) \odif{z} = 0.
+    \end{equation*}
+    The contribution of \(\mathcal{C}_3\) and \(-\mathcal{C}_3\) cancel
+    out, which leaves
+    \begin{align*}
+        \int_{\mathcal{C}_1 - \mathcal{C}_2} f\left( z \right) \odif{z} & = 0                                                \\
+        \int_{\mathcal{C}_1} f\left( z \right) \odif{z}                 & = \int_{\mathcal{C}_2} f\left( z \right) \odif{z}.
+    \end{align*}
+\end{proof}
+\begin{theorem}[Cauchy's integral formula for functions]
+    Let \(f\left( z \right)\) be analytic on and within a simple closed
+    curve \(\mathcal{C}\), and let \(z_0\) be a point within
+    \(\mathcal{C}\). Then,
+    \begin{equation*}
+        f\left( z_0 \right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( z \right)}{z - z_0} \odif{z}.
+    \end{equation*}
+    Note we may alternatively write this as
+    \begin{equation*}
+        f\left( z \right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z} \odif{w}
+    \end{equation*}
+    for an arbitrary point \(z\) within \(\mathcal{C}\).
+\end{theorem}
+\begin{proof}
+    The function
+    \begin{equation*}
+        \frac{f\left( z \right)}{z - z_0}
+    \end{equation*}
+    is analytic on and within \(\mathcal{C}\), except at \(z = z_0\).
+    By Cauchy's integral theorem, we can deform \(\mathcal{C}\) into a
+    circle \(\mathcal{C}_R\) of radius \(R\) centred at \(z_0\),
+    oriented in the same direction as \(\mathcal{C}\):
+    \begin{equation*}
+        \oint_{\mathcal{C}} \frac{f\left( z \right)}{z - z_0} \odif{z} = \oint_{\mathcal{C}_R} \frac{f\left( z \right)}{z - z_0} \odif{z}.
+    \end{equation*}
+    As \(f\) is analytic, it must be continuous, and \(f\left( z_0 \right)\)
+    must be well-defined. Therefore, by taking the limit \(R \to 0\), we
+    have concluded our proof:
+    \begin{equation*}
+        \oint_{\mathcal{C}_R} \frac{f\left( z \right)}{z - z_0} \odif{z} = \lim_{R \to 0} \oint_{\mathcal{C}_R} \frac{f\left( z \right)}{z - z_0} \odif{z} = \oint_{\mathcal{C}_R} \frac{f\left( z_0 \right)}{z - z_0} \odif{z} = f\left( z_0 \right) \oint_{\mathcal{C}_R} \frac{1}{z - z_0} \odif{z} = f\left( z_0 \right) 2 \pi i.
+    \end{equation*}
+\end{proof}
+\begin{theorem}[Cauchy's integral formula for derivatives]
+    Let \(f\left( z \right)\) be analytic on and within a simple closed
+    curve \(\mathcal{C}\), then,
+    \begin{equation*}
+        f^{\left( n \right)}\left( z \right) = \frac{n!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^{n + 1}} \odif{w}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We will prove this result using induction. For the base case, we
+    will consider the limit definition of the first derivative of \(f\):
+    \begin{equation*}
+        f'\left( z \right) = \lim_{\adif{z} \to 0} \frac{f\left( z + \adif{z} \right) - f\left( z \right)}{\adif{z}}.
+    \end{equation*}
+    We can express both terms in the numerator using the Cauchy integral
+    formula:
+    \begin{equation*}
+        f\left( z + \adif{z} \right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z - \adif{z}} \odif{w}, \qquad f\left( z \right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z} \odif{w},
+    \end{equation*}
+    so that
+    \begin{align*}
+        f'\left( z \right) & = \lim_{\adif{z} \to 0} \frac{1}{\adif{z}} \left[ \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z - \adif{z}} \odif{w} - \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z} \odif{w} \right] \\
+                           & = \lim_{\adif{z} \to 0} \frac{1}{2 \pi i \adif{z}} \oint_{\mathcal{C}} f\left( w \right) \left[ \frac{1}{w - z - \adif{z}} - \frac{1}{w - z} \right] \odif{w}                                                                        \\
+                           & = \lim_{\adif{z} \to 0} \frac{1}{2 \pi i \adif{z}} \oint_{\mathcal{C}} \frac{f\left( w \right) \adif{z}}{\left( w - z - \adif{z} \right) \left( w - z \right)} \odif{w}                                                              \\
+                           & = \lim_{\adif{z} \to 0} \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^2 - \adif{z} \left( w - z \right)} \odif{w}                                                                              \\
+                           & = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^2} \odif{w}.
+    \end{align*}
+    We will now assume that this theorem holds for \(n = k\),
+    \begin{equation*}
+        f^{\left( k \right)}\left( z \right) = \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^{k + 1}} \odif{w},
+    \end{equation*}
+    and show that it also holds when \(n = k + 1\).
+    We will again use the limit definition of the derivative for this
+    step:
+    \begin{equation*}
+        f^{\left( k + 1 \right)}\left( z \right) = \lim_{\adif{z} \to 0} \frac{f^{\left( k \right)}\left( z + \adif{z} \right) - f^{\left( k \right)}\left( z \right)}{\adif{z}}.
+    \end{equation*}
+    Using the induction hypothesis, we can express the terms in the
+    numerator as:
+    \begin{equation*}
+        f^{\left( k \right)}\left( z + \adif{z} \right) = \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z - \adif{z} \right)^{k + 1}} \odif{w}, \qquad f^{\left( k \right)}\left( z \right) = \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^{k + 1}} \odif{w}.
+    \end{equation*}
+    Then,
+    \begin{align*}
+        f^{\left( k + 1 \right)}\left( z \right) & = \lim_{\adif{z} \to 0} \frac{1}{\adif{z}} \left[ \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z - \adif{z} \right)^{k + 1}} \odif{w} - \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^{k + 1}} \odif{w} \right] \\
+                                                 & = \lim_{\adif{z} \to 0} \frac{k!}{2 \pi i \adif{z}} \oint_{\mathcal{C}} f\left( w \right) \left[ \frac{1}{\left( w - z - \adif{z} \right)^{k + 1}} - \frac{1}{\left( w - z \right)^{k + 1}} \right] \odif{w}                                                                         \\
+                                                 & = \lim_{\adif{z} \to 0} \frac{k!}{2 \pi i \adif{z}} \oint_{\mathcal{C}} f\left( w \right) \frac{\left( w - z \right)^{k + 1} - \left( w - z - \adif{z} \right)^{k + 1}}{\left( w - z - \adif{z} \right)^{k + 1} \left( w - z \right)^{k + 1}} \odif{w}                               \\
+                                                 & = \lim_{\adif{z} \to 0} \frac{k!}{2 \pi i \adif{z}} \oint_{\mathcal{C}} f\left( w \right) \frac{\left( w - z \right)^{k + 1} - \left( w - z - \adif{z} \right)^{k + 1}}{\left( \left( w - z \right)^2 - \adif{z} \left( w - z \right) \right)^{k + 1}} \odif{w}.
+    \end{align*}
+    To simplify the numerator of the integrand, we will use difference
+    of \(n\)th powers formula:
+    \begin{equation*}
+        a^n - b^n = \left( a - b \right) \sum_{j = 0}^{n - 1} a^{n - 1 - j} b^j,
+    \end{equation*}
+    which greatly simplifies the numerator:
+    \begin{align*}
+        \left( w - z \right)^{k + 1} - \left( w - z - \adif{z} \right)^{k + 1} & = \left( w - z - w + z + \adif{z} \right) \sum_{j = 0}^k \left( w - z \right)^{k - j} \left( w - z - \adif{z} \right)^j                                       \\
+                                                                               & = \adif{z} \sum_{j = 0}^k \left( w - z \right)^{k - j} \left( w - z - \adif{z} \right)^j                                                                      \\
+                                                                               & = \adif{z} \left[ \left( w - z \right)^k + \left( w - z \right)^{k - 1} \left( w - z - \adif{z} \right) + \cdots + \left( w - z - \adif{z} \right)^k \right].
+    \end{align*}
+    Let us then substitute this result into the integrand:
+    \begin{align*}
+        f^{\left( k + 1 \right)}\left( z \right) & = \lim_{\adif{z} \to 0} \frac{k!}{2 \pi i \adif{z}} \oint_{\mathcal{C}} \frac{f\left( w \right) \adif{z} \left[ \left( w - z \right)^k + \cdots + \left( w - z - \adif{z} \right)^k \right]}{\left( \left( w - z \right)^2 - \adif{z} \left( w - z \right) \right)^{k + 1}} \odif{w} \\
+                                                 & = \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right) \left[ \left( w - z \right)^k + \left( w - z \right)^{k - 1} \left( w - z \right) + \cdots + \left( w - z \right)^k \right]}{\left( \left( w - z \right)^2 \right)^{k + 1}} \odif{w}                                \\
+                                                 & = \frac{k!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right) \left( k + 1 \right) \left( w - z \right)^k}{\left( w - z \right)^{2k + 2}} \odif{w}                                                                                                                                \\
+                                                 & = \frac{\left( k + 1 \right)!}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z \right)^{\left( k + 1 \right) + 1}} \odif{w}.
+    \end{align*}
+    Since the theorem holds for the base case, and also for the
+    inductive step whenever the inductive hypothesis is true, the
+    theorem holds for all \(n \in \mathbb{N}\).
+\end{proof}
+\begin{corollary}[Differentiability of analytic functions]
+    If \(f\left( z \right)\) is analytic on and within a simple closed
+    curve \(\mathcal{C}\), then \(f\) is infinitely differentiable on
+    \(\mathcal{C}\).
+\end{corollary}
+\begin{proof}
+    Cauchy's integral formula for derivatives provides an explicit
+    expression for \(f^{\left( n \right)}\left( z \right)\) in terms
+    of a contour integral, for all \(n \in \mathbb{N}\).
+\end{proof}
+\begin{theorem}[Triangle inequality for contour integrals]
+    Let \(f\left( z \right)\) be analytic on and within a simple closed
+    curve \(\mathcal{C}\), parametrised by \(z = z\left( t \right)\) for
+    \(a \leqslant t \leqslant b\). Then,
+    \begin{equation*}
+        \abs*{\int_{\mathcal{C}} f\left( z \right) \odif{z}} \leqslant \int_{\mathcal{C}} \abs*{f\left( z \right)} \abs*{\odif{z}},
+    \end{equation*}
+    where \(\odif{z} = z'\left( t \right) \odif{t}\) and
+    \(\abs*{\odif{z}} = \abs*{z'\left( t \right)} \odif{t}\).
+\end{theorem}
+\begin{proof}
+    Consider the Riemann sum of the parametrised integral:
+    \begin{equation*}
+        \sum_{i = 1}^n f\left( z\left( t_i \right) \right) z'\left( t_i \right) \adif{t},
+    \end{equation*}
+    where \(\adif{t} = \frac{b - a}{n}\). By the triangle inequality for
+    \(n\) complex numbers, we have
+    \begin{equation*}
+        \abs*{\sum_{i = 1}^n f\left( z\left( t_i \right) \right) z'\left( t_i \right) \adif{t}} \leqslant \sum_{i = 1}^n \abs*{f\left( z\left( t_i \right) \right) z'\left( t_i \right) \adif{t}} = \sum_{i = 1}^n \abs*{f\left( z\left( t_i \right) \right)} \abs*{z'\left( t_i \right)} \adif{t}.
+    \end{equation*}
+    If we consider the limit as \(n \to \infty\), we find
+    \begin{equation*}
+        \abs*{\int_a^b f\left( z\left( t \right) \right) z'\left( t \right) \odif{t}} \leqslant \int_a^b \abs*{f\left( z\left( t \right) \right)} \abs*{z'\left( t \right)} \odif{t} \iff \abs*{\int_{\mathcal{C}} f\left( z \right) \odif{z}} \leqslant \int_{\mathcal{C}} \abs*{f\left( z \right)} \abs*{\odif{z}}.
+    \end{equation*}
+\end{proof}
+\begin{corollary}[Estimation of contour integrals]
+    If \(\abs*{f\left( z \right)} \leqslant M\) for all \(z\) on and
+    within a simple closed curve \(\mathcal{C}\) parametrised by
+    \(z = z\left( t \right)\) for \(a \leqslant t \leqslant b\), then
+    \begin{equation*}
+        \abs*{\int_{\mathcal{C}} f\left( z \right) \odif{z}} \leqslant M \int_{\mathcal{C}} \abs*{\odif{z}} = M L,
+    \end{equation*}
+    where \(L\) is the length of the path \(\mathcal{C}\):
+    \begin{equation*}
+        L = \int_a^b \abs*{z'\left( t \right)} \odif{t}.
+    \end{equation*}
+\end{corollary}
+\begin{proof}
+    By the triangle inequality for contour integrals, we have
+    \begin{equation*}
+        \abs*{\int_{\mathcal{C}} f\left( z \right) \odif{z}} \leqslant \int_{\mathcal{C}} \abs*{f\left( z \right)} \abs*{\odif{z}} \leqslant M \int_{\mathcal{C}} \abs*{\odif{z}} = M L.
+    \end{equation*}
+\end{proof}
+\subsection{Complex Series}
+\begin{theorem}[Cauchy's root test]
+    Given a series of complex numbers
+    \begin{equation*}
+        \sum_{n = 0}^\infty a_n,
+    \end{equation*}
+    consider the limit superior
+    \begin{equation*}
+        C = \limsup_{n \to \infty} \abs*{a_n}^{1/n}.
+    \end{equation*}
+    If
+    \begin{itemize}
+        \item \(C < 1\): the series converges absolutely, and
+        \item \(C > 1\): the series diverges.
+    \end{itemize}
+    Note that this test is inconclusive when \(C = 1\).
+\end{theorem}
+\begin{proof}
+    We will consider each case separately.
+    When \(C < 1\),
+    \begin{equation*}
+        \limsup_{n \to \infty} \abs*{a_n}^{1/n} < 1.
+    \end{equation*}
+    Now consider some \(s \in \R\), where
+    \begin{equation*}
+        \limsup_{n \to \infty} \abs*{a_n}^{1/n} < s < 1.
+    \end{equation*}
+    As a consequence of the definition of the limit superior,
+    \(\abs*{a_n}^{1/n}\) will be less than \(s\) for most values of
+    \(n\):
+    \begin{equation*}
+        \abs*{a_n}^{1/n} < s \implies \abs*{a_n} < s^n.
+    \end{equation*}
+    Note that the series \(\sum_{n = 0}^\infty s^n\)
+    converges by the geometric series test as \(s < 1\). Therefore, by
+    the comparison test, the series \(\sum_{n = 0}^\infty \abs*{a_n}\)
+    also converges. Thus, the series \(\sum_{n = 0}^\infty a_n\)
+    converges absolutely. When \(C > 1\), we can use a similar argument
+    and choose some \(s \in \R\) such that
+    \begin{equation*}
+        \limsup_{n \to \infty} \abs*{a_n}^{1/n} > s > 1.
+    \end{equation*}
+    Here, we can show that \(\abs*{a_n}^{1/n}\) will be greater than
+    \(s\) for most values of \(n\):
+    \begin{equation*}
+        \abs*{a_n}^{1/n} > s \implies \abs*{a_n} > s^n.
+    \end{equation*}
+    As \(\sum_{n = 0}^\infty s^n\) diverges the series
+    \(\sum_{n = 0}^\infty a_n\) also diverges.
+\end{proof}
+\begin{theorem}[Cauchy-Hadamard theorem]
+    Given a complex power series
+    \begin{equation*}
+        \sum_{n = 0}^\infty a_n \left( z - z_0 \right)^n,
+    \end{equation*}
+    consider the limit superior
+    \begin{equation*}
+        \frac{1}{R} = \limsup_{n \to \infty} \abs*{a_n}^{1/n},
+    \end{equation*}
+    where we say \(R = \infty\) if the limit superior is zero.
+    \begin{itemize}
+        \item For all \(0 < r < R\), the series converges absolutely
+              and uniformly to a function \(f\left( z \right)\) on the
+              disk \(\abs*{z - z_0} < r\).
+        \item For all \(z\) outside this disk, \(\abs*{z - z_0} > R\),
+              the series diverges.
+    \end{itemize}
+    The convergence of the series is unknown on the boundary of the disk
+    \(\abs*{z - z_0} = R\). Here \(R\) is known as the \textbf{radius of
+        convergence} and can take any value in
+    \(\R \cup \left\{ \infty \right\}\).
+\end{theorem}
+\begin{proof}
+    We will first show that this series converges absolutely
+    and uniformly for all \(0 < r < R\) inside the disk
+    \(\abs*{z - z_0} < r\). As \(r < R\), we have \(1 / R < 1 / r\), so
+    that
+    \begin{equation*}
+        \limsup_{n \to \infty} \abs*{a_n}^{1/n} < \frac{1}{r}.
+    \end{equation*}
+    Consider some \(s \in \R\), where
+    \begin{equation*}
+        \limsup_{n \to \infty} \abs*{a_n}^{1/n} < s < \frac{1}{r}.
+    \end{equation*}
+    As a consequence of the definition of the limit superior,
+    \(\abs*{a_n}^{1/n}\) will be less than \(s\) for most values of
+    \(n\):
+    \begin{equation*}
+        \abs*{a_n}^{1/n} < s \implies \abs*{a_n} < s^n.
+    \end{equation*}
+    If we multiply this inequality by \(\abs*{z - z_0}^n\), we find
+    \begin{equation*}
+        \abs*{a_n \left( z - z_0 \right)^n} < s^n \abs*{z - z_0}^n < s^n r^n = \left( s r \right)^n.
+    \end{equation*}
+    As \(s < 1 / r\), we have \(s r < 1\), so that the series
+    \(\sum_{n = 0}^\infty \left( s r \right)^n\) converges by the
+    geometric series test. Therefore, by the Weierstrass M-test, the
+    series \(\sum_{n = 0}^\infty a_n \left( z - z_0 \right)^n\)
+    converges absolutely and uniformly on the disk
+    \(\abs*{z - z_0} < r\).
+    For values of \(z\) that lie outside the disk \(\abs*{z - z_0} >
+    R\), we can use the Cauchy root test to show that the series
+    diverges. Consider the limit superior of the series:
+    \begin{align*}
+        \limsup_{n \to \infty} \abs*{a_n \left( z - z_0 \right)^n}^{1/n} & = \limsup_{n \to \infty} \abs*{a_n}^{1/n} \abs*{z - z_0} \\
+                                                                         & = \abs*{z - z_0} \limsup_{n \to \infty} \abs*{a_n}^{1/n} \\
+                                                                         & = \abs*{z - z_0} \frac{1}{R}                             \\
+                                                                         & > 1.
+    \end{align*}
+    As the limit superior is greater than one, by the Cauchy root test,
+    the series diverges for all \(z\) outside the disk
+    \(\abs*{z - z_0} = R\).
+\end{proof}
+\subsubsection{Taylor Series}
+The Taylor series expansion of a real-valued function \(f\left( x
+\right)\) about a point \(x_0\) is defined as
+\begin{equation*}
+    f\left( x \right) = \sum_{n = 0}^\infty a_n \left( x - x_0 \right)^n,
+\end{equation*}
+where through repeated differentiation, we can show
+\begin{equation*}
+    a_n = \frac{f^{\left( n \right)}\left( x_0 \right)}{n!}.
+\end{equation*}
+Here, \(f^{\left( n \right)}\left( x_0 \right)\) is the \(n\)th
+derivative of \(f\left( x \right)\) evaluated at \(x_0\).
+Let us propose that we can extend this definition to a complex-valued
+function \(f\left( z \right)\), such that we can define the
+Taylor series about a point \(z_0\) as a complex power series:
+\begin{equation*}
+    f\left( z \right) = \sum_{n = 0}^\infty a_n \left( z - z_0 \right)^n,
+\end{equation*}
+with a radius of convergence \(R\) by the Cauchy-Hadamard theorem.
+\begin{theorem}[Analytic functions have a Taylor series expansion]
+    Let \(f\left( z \right)\) be an analytic function on and within a
+    simple closed curve \(\mathcal{C}\), then \(f\left( z \right)\) has a
+    Taylor series expansion about any point \(z_0\) within \(\mathcal{C}\):
+    \begin{equation*}
+        f\left( z \right) = \sum_{n = 0}^\infty a_n \left( z - z_0 \right)^n,
+    \end{equation*}
+    with radius of convergence \(R\), which is the largest disk from
+    \(z_0\) that is contained within \(\mathcal{C}\). The coefficients
+    of this series are given by:
+    \begin{equation*}
+        a_n = \frac{f^{\left( n \right)}\left( z_0 \right)}{n!} = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z_0 \right)^{n + 1}} \odif{w}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Consider Cauchy's integral formula for derivatives, which states
+    that
+    \begin{equation*}
+        f\left( z \right) = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{w - z} \odif{w}.
+    \end{equation*}
+    We will express the denominator term using a geometric series:
+    \begin{align*}
+        \frac{1}{w - z} & = \frac{1}{w - z_0 + z_0 - z}                                                                                               \\
+                        & = \frac{1}{w - z_0} \cdot \frac{1}{1 - \frac{z - z_0}{w - z_0}}                                                             \\
+                        & = \frac{1}{w - z_0} \sum_{n = 0}^\infty \left( \frac{z - z_0}{w - z_0} \right)^n, \qquad \abs*{\frac{z - z_0}{w - z_0}} < 1 \\
+                        & = \sum_{n = 0}^\infty \frac{1}{\left( w - z_0 \right)^{n + 1}} \left( z - z_0 \right)^n.
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        f\left( z \right) & = \frac{1}{2 \pi i} \oint_{\mathcal{C}} f\left( w \right) \left[ \sum_{n = 0}^\infty \frac{1}{\left( w - z_0 \right)^{n + 1}} \left( z - z_0 \right)^n \right] \odif{w} \\
+                          & = \sum_{n = 0}^\infty \left[ \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z_0 \right)^{n + 1}} \odif{w} \right] \left( z - z_0 \right)^n   \\
+                          & = \sum_{n = 0}^\infty \frac{f^{\left( n \right)}\left( z_0 \right)}{n!} \left( z - z_0 \right)^n
+    \end{align*}
+    within the disk \(\abs*{z - z_0} < R\), where \(R\) is the radius of
+    convergence.
+\end{proof}
+\begin{theorem}[A function with a Taylor series expansion is analytic]
+    Let \(f\left( z \right)\) be a function with a Taylor series
+    expansion about a point \(z_0\) with radius of convergence \(R\):
+    \begin{equation*}
+        f\left( z \right) = \sum_{n = 0}^\infty a_n \left( z - z_0 \right)^n,
+    \end{equation*}
+    Then, \(f\left( z \right)\) is analytic on and within the disk
+    \(\abs*{z - z_0} < R\), and its derivatives are given by termwise
+    differentiation:
+    \begin{equation*}
+        f^{\left( n \right)}\left( z \right) = \sum_{k = 0}^\infty a_k \odv*[order=n]{\left[ \left( z - z_0 \right)^k \right]}{z} = \sum_{k = n}^\infty a_k \frac{k!}{\left( k - n \right)!} \left( z - z_0 \right)^{k - n}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    As the Taylor series is a sum of analytic functions, it is also
+    analytic on the disk \(\abs*{z - z_0} < R\). Proving the form of the
+    derivative is trivial.
+\end{proof}
+\subsubsection{Singularities}
+There are three types of \textbf{isolated singularities} that can occur
+in complex functions. Suppose \(f\left( z \right)\) is analytic on a
+punctured neighbourhood \(0 < \abs{z - z_0} < R\), but not at \(z_0\).
+\begin{itemize}
+    \item \textbf{Removable singularities}: \(f\left( z \right)\) has a
+          removable singularity at \(z_0\) if the limit
+          \begin{equation*}
+              L = \lim_{z \to z_0} f\left( z \right)
+          \end{equation*}
+          exists and is finite. In this case, we can define a new
+          function \(g\left( z \right)\)
+          \begin{equation*}
+              g\left( z \right) =
+              \begin{cases}
+                  f\left( z \right), & z \neq z_0 \\
+                  L,                 & z = z_0
+              \end{cases}
+          \end{equation*}
+          that is analytic at \(z_0\).
+    \item \textbf{Poles}: \(f\left( z \right)\) has a pole of
+          order \(m \in \N\) at \(z_0\) if there exists a function
+          \(g\left( z \right)\) that is analytic at \(z_0\) such that
+          \begin{equation*}
+              f\left( z \right) = \frac{g\left( z \right)}{\left( z - z_0 \right)^m},
+          \end{equation*}
+    \item \textbf{Essential singularities}: \(f\left( z \right)\) has an
+          essential singularity at \(z_0\) if the singularity is neither
+          removable nor a pole.
+\end{itemize}
+\subsubsection{Laurent Series}
+While Taylor series represent analytic functions within a disk centred
+at a point \(z_0\), they fail to converge if the function is not
+analytic at \(z_0\). To describe the behaviour of functions near
+isolated singularities, we will generalise the Taylor series by allowing
+negative powers of \(\left( z - z_0 \right)\).
+The Laurent series expansion of a function \(f\left( z \right)\) about a
+point \(z_0\) is defined as
+\begin{equation*}
+    f\left( z \right) = \sum_{n = -\infty}^\infty a_n \left( z - z_0 \right)^n,
+\end{equation*}
+where the coefficients \(a_n\) are given by the contour integral:
+\begin{equation*}
+    a_n = \frac{1}{2 \pi i} \oint_{\mathcal{C}} \frac{f\left( w \right)}{\left( w - z_0 \right)^{n + 1}} \odif{w}.
+\end{equation*}
+This series converges in an annular region defined by the radii of
+convergence \(r\) and \(R\) such that
+\begin{equation*}
+    r < \abs*{z - z_0} < R.
+\end{equation*}
+
 \end{document}

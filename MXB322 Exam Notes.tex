@@ -148,7 +148,7 @@
     \end{itemize}
     Transform the ODE
     \begin{equation*}
-        a_2 y'' + a_1 y' + a_0 y = 0
+        a_2 y'' + a_1 y' + a_0 y = \lambda y
     \end{equation*}
     with the integrating factor:
     \begin{equation*}
@@ -307,14 +307,6 @@
     \begin{equation*}
         f\left( z_0 \right) = \frac{1}{2 \pi i} \oint_C \frac{f\left( z \right)}{z - z_0} \odif{z}
     \end{equation*}
-    \subsection{Laurent Series Expansion}
-    If \(f\) is analytic on \(0 < \abs{z - z_0} < d\), but contains
-    an \textbf{isolated singularity} at \(z_0\), then \(f\) can be
-    represented by
-    \begin{equation*}
-        f\left( z \right) = \sum_{n = -\infty}^\infty a_n \left( z - z_0 \right)^n
-    \end{equation*}
-    where \(a_n \in \C\).
     \subsection{Isolated Singularities}
     Suppose \(f\) is analytic in \(V = U\backslash\left\{ z_0 \right\}\), then \(z_0\) is a \textbf{singularity} of \(f\).
     Assume the existence of \(g\) such that \(g\) is analytic in \(U\). Then the singularity of \(f\) at \(z_0\) is:
@@ -332,6 +324,14 @@
               (smallest power in Laurent series). When \(n = 1\), \(z_0\) is a \textbf{simple pole}.
         \item \textbf{Essential} (infinitely many negative powers)
     \end{itemize}
+    \subsection{Laurent Series Expansion}
+    If \(f\) is analytic on \(0 < \abs{z - z_0} < d\), but contains
+    an \textbf{isolated singularity} at \(z_0\), then \(f\) can be
+    represented by
+    \begin{equation*}
+        f\left( z \right) = \sum_{n = -\infty}^\infty a_n \left( z - z_0 \right)^n
+    \end{equation*}
+    where \(a_n \in \C\).
     \subsection{Residues (\texorpdfstring{\(a_{-1}\)}{a-1} term)}
     For a simple pole,
     \begin{equation*}
